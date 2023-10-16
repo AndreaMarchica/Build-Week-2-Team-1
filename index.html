@@ -14,10 +14,10 @@
 	<body>
 		<header></header>
 
-		<main>
-			<div class="container">
+		<main class="vh-100">
+			<div class="main-container vh-100">
 				<div class="row">
-					<div class="col col-lg-3 bg-black text-white" id="sidebar">
+					<div class="col col-lg-3 bg-black text-white vh-100" id="sidebar">
 						<div class="dropdown">
 							<a
 								class="btn"
@@ -37,17 +37,17 @@
 							</ul>
 						</div>
 						<div class="row">
-							<div class="col ">
+							<div class="col">
 								<ul>
-									<li>Home</li>
+									<li><ion-icon name="home-outline" class="me-2"></ion-icon>Home</li>
 									<li>Cerca</li>
 									<li>La tua libreria</li>
-									<br>
+									<br />
 									<li>Crea Playlist</li>
 									<li>Brani che ti piacciono</li>
 									<li>I tuoi episodi</li>
 								</ul>
-							</div >
+							</div>
 						</div>
 						<div class="row">
 							<div class="col">
@@ -62,66 +62,127 @@
 						</div>
 					</div>
 					<div class="col col-lg-7 text-white" id="center">
-						<div class="row">
-							<div class="col" id="arrow">a</div>
-							<div class="col" id="profile"></div>
+						<div class="row d-flex justify-content-between">
+							<!-- Buttons -->
+							<div
+								class="col col-2 m-3 d-flex align-items-center justify-content-between"
+								id="arrow">
+								<div>
+									<a
+										href="#"
+										type="button"
+										data-bs-target="#carouselExample"
+										data-bs-slide="prev">
+										<ion-icon
+											name="chevron-back-outline"
+											class="fs-3 rounded-circle bg-black"></ion-icon>
+									</a>
+									<a
+										href="#"
+										type="button"
+										data-bs-target="#carouselExample"
+										data-bs-slide="next">
+										<ion-icon
+											name="chevron-forward-outline"
+											class="fs-3 rounded-circle bg-black"></ion-icon>
+									</a>
+								</div>
+							</div>
+							<!-- Profile -->
+							<div
+								class="col col-4 justify-content-end d-flex align-items-center"
+								id="profile">
+								<div class="btn-group rounded-pill bg-black d-flex align-items-center">
+									<img
+										class="rounded-pill"
+										src="assets/imgs/main/image-6.jpg"
+										width="30"
+										height="30"
+										alt="avatar logo" />
+									<span class="ms-2">USER NAME</span>
+									<button
+										type="button"
+										class="btn btn-dark dropdown-toggle bg-black ms-2 rounded-end-pill border-0"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"></button>
+									<ul class="dropdown-menu">
+										<li>
+											<a class="dropdown-item" href="profile.html">Profile</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#">Settings</a>
+										</li>
+										<li><a class="dropdown-item" href="#">Log Out</a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<!-- <div class="card mb-3">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<img src="..." class="img-fluid rounded-start" alt="..." />
-								</div>
-								<div  class="col-md-8">
-									
-									<div class="card-body">
-										<h3></h3>
-										<h1>VIOLA</h1>
-										<p></p>
-										<p></p>
-										<div class="dropdown">
-											<button type="button" class="btn btn-success">Play </button>
-											<button type="button" class="btn btn btn-outline-light">Salva</button>
-											<a
-												class="btn"
-												href="#"
-												role="button"
-												data-bs-toggle="dropdown"
-												aria-expanded="false">
-												<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-											</a>
-
-											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="#">File</a></li>
-												<li><a class="dropdown-item" href="#">Modifica</a></li>
-												<li><a class="dropdown-item" href="#">Visualizza</a></li>
-												<li><a class="dropdown-item" href="#">Rirpoduzione</a></li>
-												<li><a class="dropdown-item" href="#">Assistenza</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<div class="container">
-							<div>
-								<a
-									href="#"
-									type="button"
-									data-bs-target="#carouselExample"
-									data-bs-slide="prev">
-									<ion-icon name="chevron-back-circle-outline"></ion-icon
-								></a>
-								<a
-									href="#"
-									type="button"
-									data-bs-target="#carouselExample"
-									data-bs-slide="next">
-									<ion-icon name="chevron-forward-circle-outline"></ion-icon
-								></a>
-							</div>
+						<div>
 							<div id="carouselExample" class="carousel slide">
 								<div class="carousel-inner">
 									<div class="carousel-item active">
+										<!-- Card -->
+										<div class="card mb-3">
+											<div class="row g-0">
+												<div class="col-md-4">
+													<img
+														src="assets/imgs/main/image-1.jpg"
+														class="img-fluid rounded-start"
+														alt="" />
+												</div>
+												<div class="col-md-8">
+													<div class="card-body">
+														<h3 class="fs-6">Album</h3>
+														<h1>Viola (Feat. Salmo)</h1>
+														<p>Fede, Salmo</p>
+														<p>Ascolta il nuovo singolo di Fedez e Salmo</p>
+														<div class="dropdown">
+															<button
+																type="button"
+																class="btn btn-success rounded-pill">
+																Play
+															</button>
+															<button
+																type="button"
+																class="btn btn-outline-light rounded-pill">
+																Salva
+															</button>
+
+															<a
+																class="btn"
+																href="#"
+																role="button"
+																data-bs-toggle="dropdown"
+																aria-expanded="false">
+																<ion-icon
+																	name="ellipsis-horizontal-outline"
+																	class="text-white"></ion-icon>
+															</a>
+
+															<ul class="dropdown-menu">
+																<li><a class="dropdown-item" href="#">File</a></li>
+																<li>
+																	<a class="dropdown-item" href="#">Modifica</a>
+																</li>
+																<li>
+																	<a class="dropdown-item" href="#">Visualizza</a>
+																</li>
+																<li>
+																	<a class="dropdown-item" href="#"
+																		>Rirpoduzione</a
+																	>
+																</li>
+																<li>
+																	<a class="dropdown-item" href="#">Assistenza</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="carousel-item">
 										<div class="card mb-3">
 											<div class="row g-0">
 												<div class="col-md-4">
@@ -132,15 +193,19 @@
 												</div>
 												<div class="col-md-8">
 													<div class="card-body">
-														<h3></h3>
-														<h1></h1>
-														<p></p>
-														<p></p>
+														<h3 class="fs-6">Album</h3>
+														<h1>Viola (Feat. Salmo)</h1>
+														<p>Fede, Salmo</p>
+														<p>Ascolta il nuovo singolo di Fedez e Salmo</p>
 														<div class="dropdown">
-															<button type="button" class="btn btn-success rounded-pill">
+															<button
+																type="button"
+																class="btn btn-success rounded-pill">
 																Play
 															</button>
-															<button type="button" class="btn  btn-outline-light rounded-pill">
+															<button
+																type="button"
+																class="btn btn-outline-light rounded-pill">
 																Salva
 															</button>
 															<a
@@ -150,7 +215,8 @@
 																data-bs-toggle="dropdown"
 																aria-expanded="false">
 																<ion-icon
-																	name="ellipsis-horizontal-outline"></ion-icon>
+																	name="ellipsis-horizontal-outline"
+																	class="text-white"></ion-icon>
 															</a>
 
 															<ul class="dropdown-menu">
@@ -179,23 +245,42 @@
 									<div class="carousel-item">
 										<!-- qui va un altra card -->
 									</div>
-									<div class="carousel-item">
-										<!-- qui va un altra card -->
-									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col">Buonasera</div>
 						<div class="row">
+							<!-- card -->
 							<div class="col col-lg-4">
 								<div class="card mb-3">
 									<div class="row g-0">
 										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
+											<img
+												src="assets/imgs/main/image-11.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-8 d-flex align-items-center">
 											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title mb-0">Be The Young</h5>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end card -->
+							<div class="col col-lg-4">
+								<div class="card mb-3">
+									<div class="row g-0">
+										<div class="col-md-4">
+											<img
+												src="assets/imgs/main/image-16.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
+										</div>
+										<div class="col-md-8 d-flex align-items-center">
+											<div class="card-body">
+												<h5 class="card-title mb-0">Be The Young</h5>
 											</div>
 										</div>
 									</div>
@@ -205,11 +290,14 @@
 								<div class="card mb-3">
 									<div class="row g-0">
 										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
+											<img
+												src="assets/imgs/main/image-16.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-8 d-flex align-items-center">
 											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title mb-0">Be The Young</h5>
 											</div>
 										</div>
 									</div>
@@ -219,11 +307,14 @@
 								<div class="card mb-3">
 									<div class="row g-0">
 										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
+											<img
+												src="assets/imgs/main/image-16.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-8 d-flex align-items-center">
 											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title mb-0">Be The Young</h5>
 											</div>
 										</div>
 									</div>
@@ -233,11 +324,14 @@
 								<div class="card mb-3">
 									<div class="row g-0">
 										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
+											<img
+												src="assets/imgs/main/image-16.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-8 d-flex align-items-center">
 											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title mb-0">Be The Young</h5>
 											</div>
 										</div>
 									</div>
@@ -247,36 +341,31 @@
 								<div class="card mb-3">
 									<div class="row g-0">
 										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
+											<img
+												src="assets/imgs/main/image-16.jpg"
+												class="img-fluid rounded-start"
+												alt="..." />
 										</div>
-										<div class="col-md-8">
+										<div class="col-md-8 d-flex align-items-center">
 											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title mb-0">Be The Young</h5>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col col-lg-4">
-								<div class="card mb-3">
-									<div class="row g-0">
-										<div class="col-md-4">
-											<img src="..." class="img-fluid rounded-start" alt="..." />
-										</div>
-										<div class="col-md-8">
-											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+
+							<!-- end cards -->
 						</div>
 						<div class="col">Altro di ciò che ti piace</div>
 						<div class="row">
+							<!-- card -->
 							<div class="col col-lg-3">
 								<div class="card">
-									<img src="..." class="card-img-top" alt="..." />
+									<img
+										src="assets/imgs/main/image-10.jpg"
+										class="card-img-top"
+										alt="..." />
 									<div class="card-body">
 										<p class="card-text">
 											Some quick example text to build on the card title and make up the
@@ -285,6 +374,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- end card -->
 							<div class="col col-lg-3">
 								<div class="card">
 									<img src="..." class="card-img-top" alt="..." />

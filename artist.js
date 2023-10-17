@@ -23,11 +23,7 @@ const getData = function () {
       console.log('API SPOTY', song)
       const data = song.data
       fieldCarousel(data)
-      // fillArtistSongs(data)
-      // fillSongsRank(data)
-      // fillSongsDuration(data)
       generateArtist(data)
-      aumentaNum()
     })
     .catch((err) => {
       console.log('Si è verificato un errore:', err)
@@ -55,45 +51,8 @@ const fieldCarousel = (arrayOfSongs) => {
   })
 }
 
-// const fillArtistSongs = function (arrayOfSongs) {
-//   arrayOfSongs.forEach((data) => {
-//     const olTracks = document.getElementById('ol-tracks')
-//     const newSongsDiv = document.createElement('div')
-//     // newSongsDiv.classList.add("d-flex");
-//     const newLiTracks = document.createElement('li')
-//     newLiTracks.classList.add('d-flex')
-//     newLiTracks.innerHTML = `<img src="${data.album.cover_small}"/> <p>${data.title}</p>`
-//     newSongsDiv.appendChild(newLiTracks)
-//     olTracks.appendChild(newSongsDiv)
-//   })
-// }
-
-// const fillSongsRank = function (arrayOfSongs) {
-//   arrayOfSongs.forEach((data) => {
-//     const ulRank = document.getElementById('ul-rank')
-//     const newLiRank = document.createElement('li')
-//     newLiRank.classList.add('mb-5')
-//     newLiRank.innerText = `${data.rank}`
-//     ulRank.appendChild(newLiRank)
-//   })
-// }
-// const fillSongsDuration = function (arrayOfSongs) {
-//   arrayOfSongs.forEach((data) => {
-//     const ulDuration = document.getElementById('ul-duration')
-//     const newLiDuration = document.createElement('li')
-//     const time = `${data.duration}`
-//     const minutes = Math.floor(time / 60)
-//     const seconds = time - minutes * 60
-//     newLiDuration.innerText = `${minutes} : ${seconds}`
-//     ulDuration.appendChild(newLiDuration)
-//     console.log(data.duration)
-//   })
-// }
-// const minutes = Math.floor(time / 60);
-// const seconds = time - minutes * 60;
-// console.log(seconds);
-
 const generateArtist = (arrayOfSongs) => {
+  let numero = 1
   arrayOfSongs.forEach((data) => {
     const row = document.getElementById('special-row')
     const newColTrack = document.createElement('div')
@@ -103,24 +62,15 @@ const generateArtist = (arrayOfSongs) => {
     const newColDuration = document.createElement('div')
     newColDuration.classList.add('col-3')
 
-    // const numberPhotoArtist = function () {
-    //   let x = 0
-
-    //   return x++
-    // }
-    const aumentaNum = function () {
-      let numProgressivo = 0
-      // numProgressivo++
-      return numProgressivo++
-    }
-
     newColTrack.innerHTML = `
     <div class="d-flex align-items-center">
-    <p class="m-0">${aumentaNum()}</p>
+    <p class="m-0">${numero}</p>
     <img src="${data.album.cover_small}" class="mx-3">
     <p class="m-0">${data.title}</p>
     </div>
     `
+    numero++
+    //numero++ Per incrementare il numero artista
     newColRank.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${data.rank}</p></div>`
     const time = `${data.duration}`
     const minutes = Math.floor(time / 60)

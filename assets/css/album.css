@@ -26,16 +26,7 @@ a:visited {
 }
 
 #main-track {
-	background: linear-gradient(0deg, rgba(0, 0, 0, 1) 29%, rgba(0, 0, 0, 0.38699229691876746) 100%);
-}
-
-#center {
-	/* gradiente da randomizzare */
-	background: linear-gradient(
-		180deg,
-		rgba(231, 196, 69, 1) 54%,
-		rgba(0, 0, 0, 0.7259278711484594) 100%
-	);
+	background: linear-gradient(0deg, rgba(0, 0, 0, 1) 29%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .shadow-img {

@@ -1,4 +1,5 @@
 // AUDIO
+const audio = document.getElementById('audio')
 
 const playButton = document.getElementById('play-button')
 const pauseButton = document.getElementById('pause-button')
@@ -46,10 +47,8 @@ prevButton.addEventListener('click', () => {
 audio.addEventListener('ended', () => {
   // Aggiungi la logica per passare automaticamente alla prossima traccia quando una canzone è terminata
 })
-
 // PROGRESS
 
-const audio = document.getElementById('audio')
 const progress = document.getElementById('progress')
 const progressBar = document.getElementById('progress-bar')
 

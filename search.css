@@ -67,3 +67,13 @@
   fill: #1db954;
   transition: 0.3s;
 }
+
+.songsbutton {
+  border: none;
+  background-color: #282829;
+}
+
+.card {
+  border: none; /* Rimuove il bordo */
+  box-shadow: none; /* Rimuove l'ombra */
+}

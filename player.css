@@ -83,23 +83,20 @@
   border: none;
 }
 
-#save:hover > svg {
-  stroke: white;
-}
-
 #next-button:hover > svg,
 #prev-button:hover > svg,
 #listening:hover > svg,
 #lyrics:hover > svg,
 #queue:hover > svg,
 #devices:hover > svg,
-#volume:hover > svg {
+#volume:hover > svg,
+#save:hover > svg {
   fill: #ffffff;
 }
 
 .player-bar {
   height: 72px;
   position: fixed;
-  bottom: 8px;
+  bottom: 0px;
   width: 100%;
 }

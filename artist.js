@@ -43,6 +43,8 @@ const generateArtist = (arrayOfSongs) => {
     newColDuration.classList.add("col-2");
     const backgroundArtistDiv = document.getElementById("background-artist");
     backgroundArtistDiv.style.backgroundImage = `url(${data.artist.picture_xl})`;
+    const artistName = createElement("p");
+
     newColTrack.innerHTML = `
     <div class="d-flex align-items-center">
     <p class="m-0">${numero}</p>

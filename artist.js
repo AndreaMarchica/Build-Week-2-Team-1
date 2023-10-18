@@ -22,8 +22,8 @@ const getData = function () {
     .then((song) => {
       console.log("API SPOTY", song);
       const data = song.data;
-      // fieldCarousel(data);
       generateArtist(data);
+      generateLikeTracks(data);
     })
     .catch((err) => {
       console.log("Si è verificato un errore:", err);
@@ -31,34 +31,16 @@ const getData = function () {
 };
 getData();
 
-// const fieldCarousel = (arrayOfSongs) => {
-//   const idImg1 = document.getElementById("img1");
-//   const idImg2 = document.getElementById("img2");
-//   const idImg3 = document.getElementById("img3");
-//   const allArtistName = document.querySelectorAll(".carousel-caption h5");
-//   const allArtistLink = document.querySelectorAll(".carousel-caption p");
-
-//   arrayOfSongs.forEach((data) => {
-//     idImg1.src = `${data.artist.picture_xl}`;
-//     allArtistName.forEach((nome) => {
-//       nome.innerHTML = `<h2>${data.artist.name}</h2>`;
-//     });
-
-//     idImg2.src = `${data.artist.picture_xl}`;
-//     idImg3.src = `${data.artist.picture_xl}`;
-//   });
-// };
-
 const generateArtist = (arrayOfSongs) => {
   let numero = 1;
   arrayOfSongs.forEach((data) => {
     const row = document.getElementById("special-row");
     const newColTrack = document.createElement("div");
-    newColTrack.classList.add("col-6", "my-2");
+    newColTrack.classList.add("col-8", "my-2");
     const newColRank = document.createElement("div");
-    newColRank.classList.add("col-3");
+    newColRank.classList.add("col-2");
     const newColDuration = document.createElement("div");
-    newColDuration.classList.add("col-3");
+    newColDuration.classList.add("col-2");
     const backgroundArtistDiv = document.getElementById("background-artist");
     backgroundArtistDiv.style.backgroundImage = `url(${data.artist.picture_xl})`;
     newColTrack.innerHTML = `
@@ -79,5 +61,15 @@ const generateArtist = (arrayOfSongs) => {
     row.appendChild(newColTrack);
     row.appendChild(newColRank);
     row.appendChild(newColDuration);
+  });
+};
+
+const generateLikeTracks = function (arrayOfSongs) {
+  arrayOfSongs.forEach((data) => {
+    const imageCol = document.getElementById("like-image");
+    const textCol = document.getElementById("like-text");
+    imageCol.innerHTML = `<img class='img-fluid rounded-circle align-items-center h-50 foto-artista' src='${data.artist.picture_medium}'/>`;
+    textCol.innerHTML = `<p class='mb-0'>Hai messo Mi piace a 11 brani</p>
+<p class='fs-6 opacity-50'>Di ${data.artist.name}</p>`;
   });
 };

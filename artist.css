@@ -9,3 +9,18 @@ color: #3D91F4;
 
 }
 
+#center{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 61%, rgba(62,62,62,1) 100%);
+}
+
+.ciao{
+  bottom: -15px;
+  right: 178px;
+  
+}
+
+.ciao2{
+  height: 20px;
+  width: 20px;
+}

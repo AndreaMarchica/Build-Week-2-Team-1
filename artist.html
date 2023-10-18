@@ -23,7 +23,7 @@
     <main class="vh-100">
       <div class="main-container vh-100">
         <div class="row">
-          <div class="col col-lg-3 bg-black text-white vh-100" id="sidebar">
+          <div class="col col-lg-3 bg-black text-white min-vh-100" id="sidebar">
             <div class="dropdown">
               <a
                 class="btn"
@@ -182,13 +182,17 @@
               <div class="col col-4">
                 <p class="d-flex flex-start fs-4">Brani che ti piacciono</p>
                 <div class="row align-items-center">
-                  <div id="like-image" class="col col-4 pe-3 d-flex"></div>
+                  <div
+                    id="like-image"
+                    class="col col-4 pe-3 d-flex"
+                    style="height: 100px"
+                  ></div>
                   <div id="like-text" class="col col-8 ps-0"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col col-lg-2"></div>
+          <div class="col col-lg-2 bg-black"></div>
         </div>
       </div>
     </main>

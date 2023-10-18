@@ -47,8 +47,8 @@ const generateArtist = (arrayOfSongs) => {
 
     const artistInfo = document.getElementById('artist-info')
     artistInfo.innerHTML = `
-      <p><i class="bi bi-patch-check-fill me-2"></i>Artista verificato</p>
-      <h1>${data.artist.name}</h1>
+      <p class="mb-0"><i class="bi bi-patch-check-fill me-2"></i>Artista verificato</p>
+      <h1 style="font-size:3em; font-weight:bold">${data.artist.name}</h1>
       <a href="${data.artist.link}">Scopri su deezer</a>
       `
 
@@ -77,8 +77,15 @@ const generateLikeTracks = function (arrayOfSongs) {
   arrayOfSongs.forEach((data) => {
     const imageCol = document.getElementById('like-image')
     const textCol = document.getElementById('like-text')
-    imageCol.innerHTML = `<img class='img-fluid rounded-circle align-items-center h-50 foto-artista' src='${data.artist.picture_medium}'/>
-    <i class="bi bi-heart-fill bg-success rounded-circle position-relative"></i>`
+    imageCol.innerHTML = `
+    <div class="position-absolute">
+    <img class='rounded-circle align-items-center w-25' src='${data.artist.picture_medium}'/>
+    
+    <div class="position-absolute  translate-middle ciao bg-success rounded-circle">
+    <i class="bi bi-heart-fill  ciao2"></i>
+    </div>
+    </div>
+    `
     textCol.innerHTML = `<p class='mb-0'>Hai messo Mi piace a 11 brani</p>
 <p class='fs-6 opacity-50'>Di ${data.artist.name}</p>`
   })

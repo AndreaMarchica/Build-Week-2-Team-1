@@ -18,7 +18,10 @@
   <body>
     <main>
       <div class="row vw-100">
-        <div class="col col-3 col-md-2 bg-black text-white" id="sidebar">
+        <div
+          class="col d-none col-md-2 d-md-block bg-black text-white text-nowrap text-truncate"
+          id="sidebar"
+        >
           <div class="dropdown">
             <a
               class="btn"
@@ -901,10 +904,10 @@
             </svg>
           </button>
         </div>
-        <div class="col">
-          <div>
+        <div class="col col col-1 col-md-6 col-lg-3 d-flex align-items-center">
+          <div class="w-100">
             <div class="controls d-flex justify-content-center mb-2">
-              <button id="shuffle">
+              <button class="d-none d-md-block" id="shuffle">
                 <svg
                   role="img"
                   height="20"
@@ -923,7 +926,7 @@
                   ></path>
                 </svg>
               </button>
-              <button id="prev-button">
+              <button class="d-none d-md-block" id="prev-button">
                 <svg
                   role="img"
                   height="24"
@@ -956,7 +959,7 @@
               <button id="pause-button">
                 <svg
                   role="img"
-                  height="20"
+                  height="24"
                   width="16"
                   aria-hidden="true"
                   viewBox="0 0 16 16"
@@ -968,7 +971,7 @@
                   ></path>
                 </svg>
               </button>
-              <button id="next-button">
+              <button class="d-none d-md-block" id="next-button">
                 <svg
                   role="img"
                   height="20"
@@ -977,14 +980,14 @@
                   fill="grey"
                   viewBox="0 0 16 16"
                   data-encore-id="icon"
-                  class="Svg-sc-ytk21e-0 haNxPq d-flex align-items-center"
+                  class="Svg-sc-ytk21e-0 haNxPq d-flex align-items-center d-none d-md-block"
                 >
                   <path
                     d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"
                   ></path>
                 </svg>
               </button>
-              <button id="repeat">
+              <button class="d-none d-md-block" id="repeat">
                 <svg
                   role="img"
                   height="20"
@@ -993,7 +996,8 @@
                   aria-hidden="true"
                   viewBox="0 0 16 16"
                   data-encore-id="icon"
-                  class="Svg-sc-ytk21e-0 haNxPq d-flex align-items-center"
+                  class="Svg-sc-ytk21e-0 haNxPq d-flex align-items-center d-none d-md-block"
+                  id="repeaticon"
                 >
                   <path
                     d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z"
@@ -1001,12 +1005,14 @@
                 </svg>
               </button>
             </div>
-            <div class="progress-bar" id="progress-bar">
+            <div class="progress-bar d-none d-md-block" id="progress-bar">
               <div class="progress" id="progress"></div>
             </div>
           </div>
         </div>
-        <div class="col d-flex justify-content-end align-items-center">
+        <div
+          class="col d-none d-lg-flex justify-content-end align-items-center"
+        >
           <div>
             <div class="controls d-flex justify-content-center">
               <button id="listening">

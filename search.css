@@ -90,3 +90,7 @@
   border: none; /* Rimuove il bordo */
   box-shadow: none; /* Rimuove l'ombra */
 }
+
+.fillactive {
+  fill: #1db954;
+}

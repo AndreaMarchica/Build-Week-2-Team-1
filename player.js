@@ -59,6 +59,13 @@ audio.addEventListener('timeupdate', () => {
   progress.style.width = progressPercent + '%'
 })
 
+audio.addEventListener('ended', () => {
+  playButton.style.display = 'block'
+  pauseButton.style.display = 'none'
+  audio.currentTime = 0 // Azzera la posizione della canzone
+  progress.style.width = '0%' // A
+})
+
 progressBar.addEventListener('click', (e) => {
   const progressBarRect = progressBar.getBoundingClientRect()
   const clickX = e.clientX - progressBarRect.left

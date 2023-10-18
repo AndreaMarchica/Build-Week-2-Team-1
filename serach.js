@@ -61,7 +61,7 @@ search.addEventListener('input', () => {
 
         data.forEach((songs) => {
           const newCol = document.createElement('div')
-          newCol.classList.add('col')
+          newCol.classList.add('col', 'col-12', 'col-sm-3', 'col-xl-2')
           if (songsCardCount < 18) {
             newCol.innerHTML = `
             <div class="card mb-4 shadow-sm d-flex">
@@ -129,15 +129,44 @@ search.addEventListener('input', () => {
 
               nextButton.addEventListener('click', () => {
                 // Aggiungi la logica per passare alla prossima traccia
+                console.log('next')
               })
 
               prevButton.addEventListener('click', () => {
                 // Aggiungi la logica per tornare alla traccia precedente
               })
 
-              audio.addEventListener('ended', () => {
-                // Aggiungi la logica per passare automaticamente alla prossima traccia quando una canzone è terminata
+              const repeat = document.querySelector('#repeat')
+              const repeatIcon = document.querySelector('#repeaticon')
+
+              repeat.addEventListener('click', () => {
+                if (audio.loop) {
+                  repeatIcon.classList.remove('fillactive')
+                  audio.loop = false
+                } else {
+                  repeatIcon.classList.add('fillactive')
+                  audio.loop = true
+                }
               })
+
+              audio.addEventListener('ended', () => {
+                playButton.style.display = 'block'
+                pauseButton.style.display = 'none'
+                audio.currentTime = 0
+                progress.style.width = '0%'
+                if (!isPlaying) {
+                  audio.play()
+                  isPlaying = true
+                  playButton.style.display = 'none'
+                  pauseButton.style.display = 'block'
+                } else if (isPlaying) {
+                  audio.pause()
+                  isPlaying = false
+                  pauseButton.style.display = 'none'
+                  playButton.style.display = 'block'
+                }
+              })
+
               // PROGRESS
 
               const progress = document.getElementById('progress')
@@ -160,7 +189,7 @@ search.addEventListener('input', () => {
 
               // VOLUME
 
-              let initialVolume // Inizializzeremo questa variabile all'interno dell'evento click
+              let initialVolume
               let isMuted = false // Stato iniziale del volume
               const range = document.getElementById('volume-range')
               const volume = document.getElementById('volume')
@@ -201,7 +230,7 @@ search.addEventListener('input', () => {
         const uniqueData = {}
 
         data.forEach((songs) => {
-          if (!uniqueData[songs.artist.id] && artistCardCount < 7) {
+          if (!uniqueData[songs.artist.id] && artistCardCount < 6) {
             uniqueData[songs.artist.id] = songs
 
             // Verifica se il nome dell'artista corrisponde alla tua ricerca
@@ -209,7 +238,7 @@ search.addEventListener('input', () => {
             const searchTerm = search.value.toLowerCase() // Assumo che search sia l'input di ricerca
 
             const newArtistCol = document.createElement('div')
-            newArtistCol.classList.add('col')
+            newArtistCol.classList.add('col', 'col-12', 'col-sm-3', 'col-md-2')
             newArtistCol.innerHTML = `
             <div class="card mb-4 shadow-sm d-flex">
             <div class="d-flex justify-content-center">

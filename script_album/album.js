@@ -62,14 +62,14 @@ const pad = function (hex) {
 
 const albums = (album) => {
 	const albumPosition = document.getElementById('here');
-
+	const year = album.release_date.slice(0, 4);
 	const myDiv = document.createElement('div');
 	myDiv.innerHTML = `
     <div id="album-main">
     <div class="card-album mb-3"">
-    <div class="row g-0">
+    <div class="row g-0 justify-content-center">
       <div
-        class="col-md-4 album-img justify-content-center d-flex shadow-img ms-4">
+        class="col-4 col-md-4 album-img justify-content-center d-flex shadow-img ms-4 ">
         <img src="${
 				album.cover_big
 			}" alt="cover" onload="start()" crossorigin="anonymous" id='img'"/>
@@ -77,10 +77,10 @@ const albums = (album) => {
       <div class="col-md-8 d-flex">
         <div class="card-body d-flex flex-column justify-content-between">
           <div class="flex-grow-1" id="empty-space"></div>
-          <p class="card-text fs-6 fw-bolder m-0">${album.record_type}</p>
-          <h4 class="card-title fs-1 fw-bold" id="album">${album.title}</h4>
+          <p class="card-text fs-6 fw-bolder m-0 d-none d-md-block">${album.record_type}</p>
+          <h4 class="card-title fs-1 fw-bold ps-5 ps-md-0" id="album">${album.title}</h4>
           <div class="flex-grow-1" id="empty-space"></div>
-          <div class="d-flex">
+          <div class="d-flex ps-5 py-3 ps-md-0 p7-md-0">
             <img
               class="rounded-pill me-2"
               src="${album.artist.picture}"
@@ -88,13 +88,15 @@ const albums = (album) => {
               height="20"
               alt="aalbum logo" />
             <p class="card-text m-0">
-              <small class="text-body-white fw-bold m-0">
+						<span class='d-block d-md-none'>${album.artist.name}   </span>
+              <small class="text-body-white fw-bold m-0 d-none d-md-block ">
                 ${album.artist.name} ・${album.release_date}・${album.nb_tracks} Brani,<span
                   class="text-secondary"
                   >${timingComplete(album.duration)}</span
                 >
               </small>
-            </p>
+							<span class='d-block d-md-none text-secondary'>${album.record_type} ・ ${year}</span>
+							</p>
           </div>
         </div>
       </div>
@@ -393,9 +395,6 @@ const playerSongs = (urlCover, urlSongName, urlArtistName, urlSong) => {
 		}
 	});
 
-	audio.addEventListener('ended', () => {
-		// Aggiungi la logica per passare automaticamente alla prossima traccia quando una canzone è terminata
-	});
 	// PROGRESS
 
 	const progress = document.getElementById('progress');
@@ -426,6 +425,10 @@ const playerSongs = (urlCover, urlSongName, urlArtistName, urlSong) => {
 	// SURCE DELLA CANZONE
 	const song = document.getElementById('audio');
 	song.src = urlSong;
+	audio.play();
+	isPlaying = true;
+	playButton.style.display = 'none';
+	pauseButton.style.display = 'block';
 
 	// Aggiungi un evento di ascolto per il cambio del valore del range
 	range.addEventListener('input', () => {

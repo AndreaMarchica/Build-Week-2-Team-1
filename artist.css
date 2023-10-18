@@ -4,23 +4,43 @@
   background-size: contain;
   background-position: center;
 }
-.bi.bi-patch-check-fill{
-color: #3D91F4;
-
+.bi.bi-patch-check-fill {
+  color: #3d91f4;
 }
 
-#center{
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 61%, rgba(62,62,62,1) 100%);
+#center {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(38, 38, 38, 1) 61%,
+    rgba(62, 62, 62, 1) 100%
+  );
 }
 
-.ciao{
+.ciao {
   bottom: -15px;
   right: 178px;
-  
 }
 
-.ciao2{
+.ciao2 {
   height: 20px;
   width: 20px;
+}
+
+#beppe {
+  top: 90px;
+  right: 0px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#icon-button {
+  background-position-x: -7px;
+  background-position: cover;
+  height: 100px;
+  width: 100px;
 }

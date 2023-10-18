@@ -1,6 +1,6 @@
-.carousel-item img {
-  height: 500px;
-}
-.beppe {
-  background-image: url(https://placekitten.com/700) !important;
+#background-artist {
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }

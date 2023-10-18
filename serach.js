@@ -5,18 +5,18 @@ const artistRow = document.querySelector('#artist-row')
 const artists = document.querySelector('#artists')
 let artistCardCount = 0
 let songsCardCount = 0
-// search.addEventListener('input', (e) => {
-//   const searched = e.target.value
-//   console.log(searched)
-// })
+
+// AUDIO
+const audio = document.getElementById('audio')
+
+const playButton = document.getElementById('play-button')
+const pauseButton = document.getElementById('pause-button')
+const nextButton = document.getElementById('next-button')
+const prevButton = document.getElementById('prev-button')
 
 const url = 'https://striveschool-api.herokuapp.com/api/deezer/'
 
 const query = 'search?q='
-
-// const card = ''
-// console.log('il tuo url', url)
-// console.log(query)
 
 search.value = ''
 
@@ -51,13 +51,14 @@ search.addEventListener('input', () => {
         }
       })
       .then((events) => {
-        console.log('Risultati della ricerca:', events)
+        // console.log('Risultati della ricerca:', events)
         const data = events.data
-        console.log('Ecco il risultato', data)
+        // console.log('Ecco il risultato', data)
         row.innerHTML = ''
         artistRow.innerHTML = ''
         artistCardCount = 0
         songsCardCount = 0
+
         data.forEach((songs) => {
           const newCol = document.createElement('div')
           newCol.classList.add('col')
@@ -86,9 +87,115 @@ search.addEventListener('input', () => {
             </div>
           `
             row.appendChild(newCol)
-            console.log(songs.type)
           }
           songsCardCount++
+          const startsongs = document.querySelectorAll('.songsbutton')
+          startsongs.forEach((startsong, index) => {
+            startsong.addEventListener('click', (e) => {
+              e.preventDefault()
+              const player = document.querySelector('.player-bar')
+              player.classList.remove('d-none')
+
+              const song1 = data[index]
+
+              const albumCover = document.getElementById('albumCover')
+              albumCover.src = song1.album.cover_medium
+
+              const songName = document.getElementById('songName')
+              songName.innerText = song1.title
+
+              const artistName = document.getElementById('artistName')
+              artistName.innerText = song1.artist.name
+
+              let isPlaying = false
+
+              playButton.addEventListener('click', () => {
+                if (!isPlaying) {
+                  audio.play()
+                  isPlaying = true
+                  playButton.style.display = 'none'
+                  pauseButton.style.display = 'block'
+                }
+              })
+
+              pauseButton.addEventListener('click', () => {
+                if (isPlaying) {
+                  audio.pause()
+                  isPlaying = false
+                  pauseButton.style.display = 'none'
+                  playButton.style.display = 'block'
+                }
+              })
+
+              nextButton.addEventListener('click', () => {
+                // Aggiungi la logica per passare alla prossima traccia
+              })
+
+              prevButton.addEventListener('click', () => {
+                // Aggiungi la logica per tornare alla traccia precedente
+              })
+
+              audio.addEventListener('ended', () => {
+                // Aggiungi la logica per passare automaticamente alla prossima traccia quando una canzone è terminata
+              })
+              // PROGRESS
+
+              const progress = document.getElementById('progress')
+              const progressBar = document.getElementById('progress-bar')
+
+              audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime
+                const duration = audio.duration
+                const progressPercent = (currentTime / duration) * 100
+                progress.style.width = progressPercent + '%'
+              })
+
+              progressBar.addEventListener('click', (e) => {
+                const progressBarRect = progressBar.getBoundingClientRect()
+                const clickX = e.clientX - progressBarRect.left
+                const progressBarWidth = progressBarRect.width
+                const newTime = (clickX / progressBarWidth) * audio.duration
+                audio.currentTime = newTime
+              })
+
+              // VOLUME
+
+              let initialVolume // Inizializzeremo questa variabile all'interno dell'evento click
+              let isMuted = false // Stato iniziale del volume
+              const range = document.getElementById('volume-range')
+              const volume = document.getElementById('volume')
+
+              const song = document.getElementById('audio')
+              song.src = song1.preview
+              audio.play()
+              isPlaying = true
+              playButton.style.display = 'none'
+              pauseButton.style.display = 'block'
+
+              // Aggiungi un evento di ascolto per il cambio del valore del range
+              range.addEventListener('input', () => {
+                // Aggiorna il volume audio con il valore del range
+                audio.volume = range.value / 100
+                // Aggiorna il valore iniziale quando modifichi il range
+                initialVolume = range.value / 100
+              })
+
+              volume.addEventListener('click', () => {
+                if (isMuted) {
+                  // Se è già stato disattivato, ripristina il valore iniziale
+                  range.value = initialVolume * 100
+                  audio.volume = initialVolume
+                  isMuted = false
+                } else {
+                  // Salva il valore corrente come valore iniziale, disattiva il volume
+                  initialVolume = range.value / 100
+                  audio.volume = 0
+                  range.value = 0
+                  isMuted = true
+                }
+              })
+            })
+          })
         })
 
         const uniqueData = {}
@@ -96,7 +203,6 @@ search.addEventListener('input', () => {
         data.forEach((songs) => {
           if (!uniqueData[songs.artist.id] && artistCardCount < 7) {
             uniqueData[songs.artist.id] = songs
-            // console.log('0424', songs)
 
             // Verifica se il nome dell'artista corrisponde alla tua ricerca
             const artistName = songs.artist.name.toLowerCase()

@@ -1,3 +1,16 @@
+#sidebar {
+  min-height: 100vh;
+}
+
+#genreRow,
+#artist-row {
+  margin-bottom: 80px;
+}
+
+.player-bar {
+  transition: 0.3s;
+}
+
 .genres {
   display: inline-block;
   height: 195px;

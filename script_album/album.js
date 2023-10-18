@@ -1,7 +1,7 @@
 const addressBarContent = new URLSearchParams(location.search);
 // const albumId = addressBarContent.get('albumId');
 const albumId = 9410110;
-//  922019410110
+//  92201 9410110
 // crea un canvas con l'immagine e ne ritorno il context 2d
 const draw = function (img) {
 	let canvas = document.createElement('canvas');
@@ -67,18 +67,18 @@ const albums = (album) => {
 	myDiv.innerHTML = `
     <div id="album-main">
     <div class="card-album mb-3"">
-    <div class="row g-0 justify-content-center">
+    <div class="row g-0 justify-content-center justify-content-md-start">
       <div
         class="col-4 col-md-4 album-img justify-content-center d-flex shadow-img ms-4 ">
         <img src="${
 				album.cover_big
 			}" alt="cover" onload="start()" crossorigin="anonymous" id='img'"/>
       </div>
-      <div class="col-md-8 d-flex">
+      <div class="col-md-7 d-flex">
         <div class="card-body d-flex flex-column justify-content-between">
           <div class="flex-grow-1" id="empty-space"></div>
           <p class="card-text fs-6 fw-bolder m-0 d-none d-md-block">${album.record_type}</p>
-          <h4 class="card-title fs-1 fw-bold ps-5 ps-md-0" id="album">${album.title}</h4>
+          <h4 class="card-title fs-1 mt-2 fw-bold ps-5 ps-md-0" id="album">${album.title}</h4>
           <div class="flex-grow-1" id="empty-space"></div>
           <div class="d-flex ps-5 py-3 ps-md-0 p7-md-0">
             <img
@@ -110,7 +110,7 @@ const albums = (album) => {
           <a
             href="#"
             id="play"
-            class="btn rounded-circle bg-success fs-3 d-flex align-items-center justify-content-center"
+            class="btn rounded-circle fs-3 d-flex align-items-center justify-content-center"
             ><ion-icon
               name="caret-forward-outline"
               class="text-black"></ion-icon
@@ -160,13 +160,12 @@ const tracks = (song) => {
 
 		myLi.innerHTML = `
 		<a href="#" class="btn p-0 border-0 d-flex flex-column tracks-play"
-		> <span class='text-start'> ${songs.title} </span> <span class='text-start  text-secondary'> ${songs.artist.name} </span> </a>
+		> <span class='text-start'> ${songs.title} </span>  </a><span class='text-start  text-secondary'> ${songs.artist.name} </span>
     `;
 
 		myOl.appendChild(myLi);
 		songPlace.appendChild(myOl);
 	});
-	// play();
 };
 
 // Ancora da creare la raccolta nello storage
@@ -241,8 +240,8 @@ const timingComplete = (duration) => {
 
 	return slots.reverse().join(' ');
 };
-
 const play = (data) => {
+	const likeStorage = [];
 	const track = document.querySelectorAll('.tracks-play');
 	track.forEach((tracks, index) => {
 		tracks.addEventListener('click', (e) => {
@@ -250,9 +249,34 @@ const play = (data) => {
 			player.classList.remove('d-none');
 			e.preventDefault();
 			const peppa = data[index];
-
 			playerSongs(peppa.album.cover, peppa.title, peppa.artist.name, peppa.preview);
+			const songStorage = peppa.id;
+			likeStorage.push(songStorage);
+			let stringLikes = JSON.stringify(likeStorage);
+			localStorage.setItem('song', stringLikes);
 		});
+	});
+};
+
+const deco = JSON.parse(localStorage.getItem('song'));
+
+const doubleCheck = (storage) => {
+	const filterNumbers = storage.filter(
+		(item, index) => storage.indexOf(item) === index // se è strettamente uguale mi ristituisce un nuovo array senza i dupplicati
+		// se è diverso mi ristituisce array di numeri doppi
+	);
+	return filterNumbers;
+};
+
+console.log(doubleCheck(deco));
+// pay botton
+const playBtn = () => {
+	const playBtn = document.querySelector('#play');
+
+	playBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+
+		console.log('ciao');
 	});
 };
 
@@ -284,6 +308,7 @@ fetch(myUrl, {
 		durationS(album.tracks.data);
 		timesCount(album.tracks.data);
 		play(album.tracks.data);
+		playBtn();
 	})
 	.catch((err) => {
 		console.log('Si è verificato un errore:', err);

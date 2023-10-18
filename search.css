@@ -94,3 +94,25 @@
 .fillactive {
   fill: #1db954;
 }
+
+.artist-album {
+  width: 198px;
+  height: 245px;
+  transition: 0.3s;
+  &:hover {
+    scale: 1.1;
+    transition: 0.3s;
+  }
+}
+
+.artist-album > div > div > img {
+  width: 140px;
+}
+
+.songs {
+  transition: 0.3s;
+  &:hover {
+    scale: 1.1;
+    transition: 0.3s;
+  }
+}

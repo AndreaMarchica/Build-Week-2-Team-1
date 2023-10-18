@@ -25,7 +25,7 @@ search.value = ''
 
 search.addEventListener('input', () => {
   const searchTerm = search.value // Prendi il valore dell'input
-  console.log('Ricerca:', searchTerm)
+  // console.log('Ricerca:', searchTerm)
 
   if (searchTerm !== '') {
     genres.classList.add('d-none')
@@ -68,8 +68,8 @@ search.addEventListener('input', () => {
 
         data.forEach((songs) => {
           const newCol = document.createElement('div')
-          newCol.classList.add('col', 'col-12', 'col-sm-3', 'col-xl-2')
-          if (songsCardCount < 18) {
+          newCol.classList.add('col', 'col-12', 'col-sm-3', 'col-xl-2', 'songs')
+          if (songsCardCount < 6) {
             newCol.innerHTML = `
             <div class="card mb-4 shadow-sm d-flex">
             <button class="d-flex flex-column songsbutton">
@@ -104,7 +104,7 @@ search.addEventListener('input', () => {
               player.classList.remove('d-none')
 
               const song1 = data[index]
-              console.log('ciap', song1)
+              // console.log('ciap', song1)
 
               const albumCover = document.getElementById('albumCover')
               albumCover.src = song1.album.cover_medium
@@ -137,7 +137,7 @@ search.addEventListener('input', () => {
 
               nextButton.addEventListener('click', () => {
                 // Aggiungi la logica per passare alla prossima traccia
-                console.log('next')
+                // console.log('next')
               })
 
               prevButton.addEventListener('click', () => {
@@ -238,7 +238,7 @@ search.addEventListener('input', () => {
         const uniqueData = {}
 
         data.forEach((songs) => {
-          if (!uniqueData[songs.artist.id] && artistCardCount < 6) {
+          if (!uniqueData[songs.artist.id] && artistCardCount < 8) {
             uniqueData[songs.artist.id] = songs
 
             // Verifica se il nome dell'artista corrisponde alla tua ricerca
@@ -246,29 +246,32 @@ search.addEventListener('input', () => {
             const searchTerm = search.value.toLowerCase() // Assumo che search sia l'input di ricerca
 
             const newArtistCol = document.createElement('div')
-            newArtistCol.classList.add('col', 'col-12', 'col-sm-3', 'col-md-2')
+            newArtistCol.classList.add(
+              'col',
+              'col-12',
+              'col-sm-3',
+              'col-md-2',
+              'artist-album'
+            )
             newArtistCol.innerHTML = `
-            <div class="card mb-4 shadow-sm d-flex">
+            <a href=artist.html?${songs.artist.id}>
+            <div class="card shadow-sm d-flex h-100">
             <div class="d-flex justify-content-center">
             <img
               src="${songs.artist.picture_medium}"
               class="bd-placeholder-img card-img-top rounded-circle m-2 shadow-lg"
             />
             </div>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <p class="card-text text-nowrap text-truncate mb-0 mt-3 fw-bold fs-5">
+            <div class="card-body d-flex flex-column justify-content-between pt-0">
+              <p class="card-text text-nowrap text-truncate mb-0 fw-bold fs-5">
                 ${songs.artist.name}
               </p>
               <p class="card-text text-nowrap text-truncate m-0 text-muted">
                 ${songs.artist.type}
               </p>
-              <div
-                class="d-flex justify-content-between align-items-center"
-              >
-               
-              </div>
             </div>
           </div>
+          </a>
         `
 
             if (artistName.includes(searchTerm)) {
@@ -286,38 +289,41 @@ search.addEventListener('input', () => {
         const uniqueAlbum = {}
 
         data.forEach((album) => {
-          if (!uniqueAlbum[album.artist.id] && albumCardCount < 6) {
+          if (!uniqueAlbum[album.artist.id] && albumCardCount < 8) {
             uniqueAlbum[album.artist.id] = album
-            console.log('ecco i tuoi album', album)
+            // console.log('ecco i tuoi album', album)
 
             // Verifica se il nome dell'artista corrisponde alla tua ricerca
             const albumName = album.artist.name.toLowerCase()
             const searchTerm = search.value.toLowerCase() // Assumo che search sia l'input di ricerca
 
             const newAlbumCol = document.createElement('div')
-            newAlbumCol.classList.add('col', 'col-12', 'col-sm-3', 'col-md-2')
+            newAlbumCol.classList.add(
+              'col',
+              'col-12',
+              'col-sm-3',
+              'col-md-2',
+              'artist-album'
+            )
             newAlbumCol.innerHTML = `
-            <div class="card mb-4 shadow-sm d-flex">
+            <a href='album.html?albumId=${album.id}'>
+            <div class="card shadow-sm d-flex h-100">
             <div class="d-flex justify-content-center">
             <img
               src="${album.album.cover_medium}"
               class="bd-placeholder-img card-img-top rounded-circle m-2 shadow-lg"
             />
             </div>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <p class="card-text text-nowrap text-truncate mb-0 mt-3 fw-bold fs-5">
+            <div class="card-body d-flex flex-column justify-content-between pt-0">
+              <p class="card-text text-nowrap text-truncate mb-0 fw-bold fs-5">
                 ${album.album.title}
               </p>
               <p class="card-text text-nowrap text-truncate m-0 text-muted">
                 ${album.album.type}
               </p>
-              <div
-                class="d-flex justify-content-between align-items-center"
-              >
-               
-              </div>
             </div>
           </div>
+          </a>
         `
 
             if (albumName.includes(searchTerm)) {

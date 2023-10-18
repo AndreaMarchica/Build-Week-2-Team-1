@@ -1,57 +1,57 @@
 #sidebar {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 #genreRow,
 #artist-row {
-  margin-bottom: 80px;
+	margin-bottom: 80px;
 }
 
 .player-bar {
-  transition: 0.3s;
+	transition: 0.3s;
 }
 
 .genres {
-  display: inline-block;
-  height: 195px;
-  width: 195px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  transition: 0.3s;
-  &:hover {
-    scale: 1.1;
-    transition: 0.3s;
-  }
+	display: inline-block;
+	height: 195px;
+	width: 195px;
+	overflow: hidden;
+	position: relative;
+	border-radius: 10px;
+	transition: 0.3s;
+	&:hover {
+		scale: 1.1;
+		transition: 0.3s;
+	}
 }
 
 .genreImg {
-  bottom: -25px;
-  position: absolute;
-  right: -25px;
-  rotate: 25deg;
+	bottom: -25px;
+	position: absolute;
+	right: -25px;
+	rotate: 25deg;
 }
 
 .genreSpan {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 16px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding: 16px;
 }
 
 .inputsearch {
-  background-color: #2a2a2a;
-  transition: 0.3s;
+	background-color: #2a2a2a;
+	transition: 0.3s;
 }
 
 #query:focus {
-  box-shadow: none;
-  background-color: #2a2a2a;
+	box-shadow: none;
+	background-color: #2a2a2a;
 }
 
 .inputsearch:focus-within {
-  -webkit-box-shadow: inset 0px 0px 0px 1px #ffffff;
-  box-shadow: inset 0px 0px 0px 1px #ffffff;
-  transition: 0.3s;
+	-webkit-box-shadow: inset 0px 0px 0px 1px #ffffff;
+	box-shadow: inset 0px 0px 0px 1px #ffffff;
+	transition: 0.3s;
 }
 
 #download,
@@ -62,11 +62,11 @@
 #profile svg,
 #back,
 #nextpage {
-  display: inline-block;
-  transition: 0.3s;
-  border: none;
-  display: flex;
-  align-items: center;
+	display: inline-block;
+	transition: 0.3s;
+	border: none;
+	display: flex;
+	align-items: center;
 }
 
 #download:hover,
@@ -75,18 +75,21 @@
 #news:hover svg,
 #profile:hover,
 #profile:hover svg:hover {
-  transform: scale(1.05);
-  color: #1db954;
-  fill: #1db954;
-  transition: 0.3s;
+	transform: scale(1.05);
+	color: #1db954;
+	fill: #1db954;
+	transition: 0.3s;
 }
 
 .songsbutton {
-  border: none;
-  background-color: #282829;
+	border: none;
+	background-color: #282829;
 }
 
 .card {
-  border: none; /* Rimuove il bordo */
-  box-shadow: none; /* Rimuove l'ombra */
+	border: none; /* Rimuove il bordo */
+	box-shadow: none; /* Rimuove l'ombra */
+}
+.fillactive {
+	fill: #1db954;
 }

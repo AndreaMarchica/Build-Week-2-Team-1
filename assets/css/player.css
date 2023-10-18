@@ -1,69 +1,69 @@
 .player-bar {
-  display: flex;
-  align-items: center;
-  background-color: #000000;
-  color: #fff;
-  padding: 10px;
+	display: flex;
+	align-items: center;
+	background-color: #000000;
+	color: #fff;
+	padding: 10px;
 }
 
 .album-cover img {
-  width: 80px;
-  height: 80px;
-  border-radius: 4px;
-  margin-right: 10px;
+	width: 80px;
+	height: 80px;
+	border-radius: 4px;
+	margin-right: 10px;
 }
 
 .track-info h3 {
-  font-size: 1.2em;
-  margin: 0;
+	font-size: 1.2em;
+	margin: 0;
 }
 
 .controls button {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  padding: 6px 10px;
-  margin: 0 5px;
-  cursor: pointer;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 50%;
+	padding: 6px 10px;
+	margin: 0 5px;
+	cursor: pointer;
 }
 
 .progress-bar {
-  flex: 1;
-  height: 5px;
-  background-color: #444;
-  margin: 0 10px;
-  position: relative;
-  border-radius: 50px;
+	flex: 1;
+	height: 5px;
+	background-color: #444;
+	margin: 0 10px;
+	position: relative;
+	border-radius: 50px;
 }
 
 .progress {
-  position: relative;
-  height: 100%;
-  background-color: #ffffff;
-  width: 0%; /* Esempio: il 50% rappresenta il progresso */
+	position: relative;
+	height: 100%;
+	background-color: #ffffff;
+	width: 0%; /* Esempio: il 50% rappresenta il progresso */
 }
 
 .progress-bar:hover {
-  .progress {
-    background-color: #1db954;
-  }
-  cursor: pointer;
+	.progress {
+		background-color: #1db954;
+	}
+	cursor: pointer;
 }
 
 .progress:hover::before {
-  content: '';
-  position: absolute;
-  width: 10px; /* Dimensioni del cerchio */
-  height: 10px; /* Dimensioni del cerchio */
-  background-color: #ffffff; /* Colore del cerchio */
-  border-radius: 50%; /* Rendi il cerchio rotondo */
-  top: -2px; /* Posiziona il cerchio sopra la barra di avanzamento */
-  right: 0; /* Posiziona il cerchio al centro della barra di avanzamento */
-  z-index: 3;
+	content: '';
+	position: absolute;
+	width: 10px; /* Dimensioni del cerchio */
+	height: 10px; /* Dimensioni del cerchio */
+	background-color: #ffffff; /* Colore del cerchio */
+	border-radius: 50%; /* Rendi il cerchio rotondo */
+	top: -2px; /* Posiziona il cerchio sopra la barra di avanzamento */
+	right: 0; /* Posiziona il cerchio al centro della barra di avanzamento */
+	z-index: 3;
 }
 
 #pause-button {
-  display: none;
+	display: none;
 }
 
 #next-button,
@@ -76,11 +76,11 @@
 #devices,
 #volume,
 #save {
-  background: none;
+	background: none;
 }
 
 #save {
-  border: none;
+	border: none;
 }
 
 #next-button:hover > svg,
@@ -91,12 +91,16 @@
 #devices:hover > svg,
 #volume:hover > svg,
 #save:hover > svg {
-  fill: #ffffff;
+	fill: #ffffff;
 }
 
 .player-bar {
-  height: 72px;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
+	height: 72px;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+.fillactive {
+	fill: #1db954;
 }

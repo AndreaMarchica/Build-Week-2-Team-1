@@ -1,6 +1,6 @@
 const addressBarContent = new URLSearchParams(location.search);
 // const albumId = addressBarContent.get('albumId');
-const albumId = 49383912;
+const albumId = 9410110;
 //  922019410110
 // crea un canvas con l'immagine e ne ritorno il context 2d
 const draw = function (img) {
@@ -157,7 +157,7 @@ const tracks = (song) => {
 		myLi.classList.add('py-1');
 
 		myLi.innerHTML = `
-		<a href="#" class="btn p-0 border-0 d-flex flex-column" id='tracks-play' onclick="play(event)"
+		<a href="#" class="btn p-0 border-0 d-flex flex-column tracks-play"
 		> <span class='text-start'> ${songs.title} </span> <span class='text-start  text-secondary'> ${songs.artist.name} </span> </a>
     `;
 
@@ -240,31 +240,19 @@ const timingComplete = (duration) => {
 	return slots.reverse().join(' ');
 };
 
-// Event buttons
-const songsData = (data) => {
-	data.forEach((element) => {
-		let album = element.album.cover;
-		let title = element.title;
-		let artist = element.artist.name;
-		let song = element.song;
-		console.log('qua', playerSongs(album, title, artist, song));
+const play = (data) => {
+	const track = document.querySelectorAll('.tracks-play');
+	track.forEach((tracks, index) => {
+		tracks.addEventListener('click', (e) => {
+			const player = document.querySelector('.player-bar');
+			player.classList.remove('d-none');
+			e.preventDefault();
+			const peppa = data[index];
+
+			playerSongs(peppa.album.cover, peppa.title, peppa.artist.name, peppa.preview);
+		});
 	});
-	playerSongs(data.album.cover, data.title, data.artist.name, data.preview);
 };
-const play = (e) => {
-	e.preventDefault();
-	console.log('ciao');
-	// songsData();
-};
-// const play = (data) => {
-// 	const track = document.querySelectorAll('#tracks-play');
-// 	track.forEach((tracks) => {
-// 		tracks.addEventListener('click', (e) => {
-// 			e.preventDefault();
-// 			playerSongs(data.album.cover, data.title, data.artist.name, data.preview);
-// 		});
-// 	});
-// };
 
 // get
 const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/' + albumId;
@@ -293,13 +281,7 @@ fetch(myUrl, {
 		tracks(album.tracks.data);
 		durationS(album.tracks.data);
 		timesCount(album.tracks.data);
-		// songsData(album.tracks.data);
-		// playerSongs(
-		// 	album.tracks.data[0].album.cover,
-		// 	album.tracks.data[0].title,
-		// 	album.tracks.data[0].artist.name,
-		// 	album.tracks.data[0].preview
-		// );
+		play(album.tracks.data);
 	})
 	.catch((err) => {
 		console.log('Si è verificato un errore:', err);
@@ -378,6 +360,37 @@ const playerSongs = (urlCover, urlSongName, urlArtistName, urlSong) => {
 
 	prevButton.addEventListener('click', () => {
 		// Aggiungi la logica per tornare alla traccia precedente
+	});
+
+	const repeat = document.querySelector('#repeat');
+	const repeatIcon = document.querySelector('#repeaticon');
+
+	repeat.addEventListener('click', () => {
+		if (audio.loop) {
+			repeatIcon.classList.remove('fillactive');
+			audio.loop = false;
+		} else {
+			repeatIcon.classList.add('fillactive');
+			audio.loop = true;
+		}
+	});
+
+	audio.addEventListener('ended', () => {
+		playButton.style.display = 'block';
+		pauseButton.style.display = 'none';
+		audio.currentTime = 0;
+		progress.style.width = '0%';
+		if (!isPlaying) {
+			audio.play();
+			isPlaying = true;
+			playButton.style.display = 'none';
+			pauseButton.style.display = 'block';
+		} else if (isPlaying) {
+			audio.pause();
+			isPlaying = false;
+			pauseButton.style.display = 'none';
+			playButton.style.display = 'block';
+		}
 	});
 
 	audio.addEventListener('ended', () => {

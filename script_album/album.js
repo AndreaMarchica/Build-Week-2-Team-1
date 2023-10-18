@@ -157,14 +157,14 @@ const tracks = (song) => {
 		myLi.classList.add('py-1');
 
 		myLi.innerHTML = `
-		<a href="#" class="btn p-0 border-0 d-flex flex-column" id='tracks-play'
+		<a href="#" class="btn p-0 border-0 d-flex flex-column" id='tracks-play' onclick="play(event)"
 		> <span class='text-start'> ${songs.title} </span> <span class='text-start  text-secondary'> ${songs.artist.name} </span> </a>
     `;
 
 		myOl.appendChild(myLi);
 		songPlace.appendChild(myOl);
 	});
-	play();
+	// play();
 };
 
 // Ancora da creare la raccolta nello storage
@@ -241,17 +241,30 @@ const timingComplete = (duration) => {
 };
 
 // Event buttons
-const play = () => {
-	const track = document.querySelectorAll('#tracks-play');
-	track.forEach((tracks) => {
-		tracks.addEventListener('click', (e) => {
-			e.preventDefault();
-			let trackName1 = e.target.innerHTML;
-
-			console.log(trackName1);
-		});
+const songsData = (data) => {
+	data.forEach((element) => {
+		let album = element.album.cover;
+		let title = element.title;
+		let artist = element.artist.name;
+		let song = element.song;
+		console.log('qua', playerSongs(album, title, artist, song));
 	});
+	playerSongs(data.album.cover, data.title, data.artist.name, data.preview);
 };
+const play = (e) => {
+	e.preventDefault();
+	console.log('ciao');
+	// songsData();
+};
+// const play = (data) => {
+// 	const track = document.querySelectorAll('#tracks-play');
+// 	track.forEach((tracks) => {
+// 		tracks.addEventListener('click', (e) => {
+// 			e.preventDefault();
+// 			playerSongs(data.album.cover, data.title, data.artist.name, data.preview);
+// 		});
+// 	});
+// };
 
 // get
 const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/' + albumId;
@@ -280,6 +293,13 @@ fetch(myUrl, {
 		tracks(album.tracks.data);
 		durationS(album.tracks.data);
 		timesCount(album.tracks.data);
+		// songsData(album.tracks.data);
+		// playerSongs(
+		// 	album.tracks.data[0].album.cover,
+		// 	album.tracks.data[0].title,
+		// 	album.tracks.data[0].artist.name,
+		// 	album.tracks.data[0].preview
+		// );
 	})
 	.catch((err) => {
 		console.log('Si è verificato un errore:', err);
@@ -308,4 +328,112 @@ const generateBackground = (color) => {
 	document.getElementById(
 		'center'
 	).style.background = `linear-gradient(180deg, #${color} 54%, rgba(0, 0, 0, 0) 100%)`;
+};
+
+// PLAYER AUDIO CONTROL
+
+// AUDIO
+const playerSongs = (urlCover, urlSongName, urlArtistName, urlSong) => {
+	const audio = document.getElementById('audio');
+
+	const playButton = document.getElementById('play-button');
+	const pauseButton = document.getElementById('pause-button');
+	const nextButton = document.getElementById('next-button');
+	const prevButton = document.getElementById('prev-button');
+
+	const albumCover = document.getElementById('albumCover');
+	// URL DELLA COVER
+	albumCover.src = urlCover;
+
+	// SONG NAME
+	const songName = document.getElementById('songName');
+	songName.innerText = `${urlSongName}`;
+	// ARTIST NAME
+	const artistName = document.getElementById('artistName');
+	artistName.innerText = `${urlArtistName}`;
+
+	let isPlaying = false;
+
+	playButton.addEventListener('click', () => {
+		if (!isPlaying) {
+			audio.play();
+			isPlaying = true;
+			playButton.style.display = 'none';
+			pauseButton.style.display = 'block';
+		}
+	});
+
+	pauseButton.addEventListener('click', () => {
+		if (isPlaying) {
+			audio.pause();
+			isPlaying = false;
+			pauseButton.style.display = 'none';
+			playButton.style.display = 'block';
+		}
+	});
+
+	nextButton.addEventListener('click', () => {
+		// Aggiungi la logica per passare alla prossima traccia
+	});
+
+	prevButton.addEventListener('click', () => {
+		// Aggiungi la logica per tornare alla traccia precedente
+	});
+
+	audio.addEventListener('ended', () => {
+		// Aggiungi la logica per passare automaticamente alla prossima traccia quando una canzone è terminata
+	});
+	// PROGRESS
+
+	const progress = document.getElementById('progress');
+	const progressBar = document.getElementById('progress-bar');
+
+	audio.addEventListener('timeupdate', () => {
+		const currentTime = audio.currentTime;
+		const duration = audio.duration;
+		const progressPercent = (currentTime / duration) * 100;
+		progress.style.width = progressPercent + '%';
+	});
+
+	progressBar.addEventListener('click', (e) => {
+		const progressBarRect = progressBar.getBoundingClientRect();
+		const clickX = e.clientX - progressBarRect.left;
+		const progressBarWidth = progressBarRect.width;
+		const newTime = (clickX / progressBarWidth) * audio.duration;
+		audio.currentTime = newTime;
+	});
+
+	// VOLUME
+
+	let initialVolume; // Inizializzeremo questa variabile all'interno dell'evento click
+	let isMuted = false; // Stato iniziale del volume
+	const range = document.getElementById('volume-range');
+	const volume = document.getElementById('volume');
+
+	// SURCE DELLA CANZONE
+	const song = document.getElementById('audio');
+	song.src = urlSong;
+
+	// Aggiungi un evento di ascolto per il cambio del valore del range
+	range.addEventListener('input', () => {
+		// Aggiorna il volume audio con il valore del range
+		audio.volume = range.value / 100;
+		// Aggiorna il valore iniziale quando modifichi il range
+		initialVolume = range.value / 100;
+	});
+
+	volume.addEventListener('click', () => {
+		if (isMuted) {
+			// Se è già stato disattivato, ripristina il valore iniziale
+			range.value = initialVolume * 100;
+			audio.volume = initialVolume;
+			isMuted = false;
+		} else {
+			// Salva il valore corrente come valore iniziale, disattiva il volume
+			initialVolume = range.value / 100;
+			audio.volume = 0;
+			range.value = 0;
+			isMuted = true;
+		}
+	});
 };

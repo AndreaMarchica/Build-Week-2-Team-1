@@ -41,3 +41,11 @@ a:visited {
 	height: 50px;
 	width: 50px;
 }
+
+.empty {
+	height: 48px;
+}
+
+a:hover {
+	color: white;
+}

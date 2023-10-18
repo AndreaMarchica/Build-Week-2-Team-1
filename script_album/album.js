@@ -1,7 +1,7 @@
 const addressBarContent = new URLSearchParams(location.search);
-const deleteId = addressBarContent.get('deleteId');
-const productId = addressBarContent.get('productId');
-
+// const albumId = addressBarContent.get('albumId');
+const albumId = 49383912;
+//  922019410110
 // crea un canvas con l'immagine e ne ritorno il context 2d
 const draw = function (img) {
 	let canvas = document.createElement('canvas');
@@ -114,33 +114,33 @@ const albums = (album) => {
               class="text-black"></ion-icon
           ></a>
 
-          <a href="#" class="btn fs-3" id="like"
+          <a href="#" class="btn fs-3 text-secondary" id="like"
             ><ion-icon name="heart-outline"></ion-icon
           ></a>
-          <a href="#" class="btn fs-3" id="download"
+          <a href="#" class="btn fs-3 text-secondary" id="download"
             ><ion-icon name="arrow-down-circle-outline"></ion-icon
           ></a>
-          <a href="#" class="btn fs-3" id="download"
+          <a href="#" class="btn fs-3 text-secondary" id="options"
             ><ion-icon name="ellipsis-horizontal-outline"></ion-icon
           ></a>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col col-4 ps-4">
+      <div class="col col-4 ps-4 text-secondary">
         <p># Titolo</p>
       </div>
-      <div class="col col-5 text-end"><p>RIPRODUZIONI</p></div>
-      <div class="col col-3 text-center">
-        <p><ion-icon name="time-outline"></ion-icon></p>
+      <div class="col pe-0 col-5 text-end text-secondary"><p>RIPRODUZIONI</p></div>
+      <div class="col  col-3 text-end text-secondary">
+        <p class='pe-5 text-secondary'><ion-icon name="time-outline"></ion-icon></p>
       </div>
     </div>
     <hr class="mt-0" />
     <div class="row">
-      <div class="col col-6" id='tracks-name'>
+      <div class="col col-7 " id='tracks-name'>
     
       </div>
-      <div class="col col-3 text-end" id='times'>
+      <div class="col p-0 col-2 text-end" id='times'>
       </div>
       <div class="col col-3" id='duration'>
       </div>
@@ -154,22 +154,30 @@ const tracks = (song) => {
 	const myOl = document.createElement('ol');
 	song.forEach((songs) => {
 		const myLi = document.createElement('li');
+		myLi.classList.add('py-1');
+
 		myLi.innerHTML = `
-    ${songs.title}
+		<a href="#" class="btn p-0 border-0 d-flex flex-column" id='tracks-play'
+		> <span class='text-start'> ${songs.title} </span> <span class='text-start  text-secondary'> ${songs.artist.name} </span> </a>
     `;
+
 		myOl.appendChild(myLi);
 		songPlace.appendChild(myOl);
 	});
+	play();
 };
 
 // Ancora da creare la raccolta nello storage
 const timesCount = (times) => {
 	const countPlace = document.getElementById('times');
 	const myUl = document.createElement('ul');
-	times.forEach((timess) => {
+	myUl.classList.add('text-end');
+	times.forEach((index) => {
 		const myLi = document.createElement('li');
+		myLi.classList.add('py-1');
 		myLi.innerHTML = `
-    1
+    <a href="#" class="btn p-0 border-0 d-flex flex-column flex-row-reverse align-items-center"
+		><span class='text-secondary'>1</span> <span class='empty'></span> </a>
     `;
 		myUl.appendChild(myLi);
 		countPlace.appendChild(myUl);
@@ -178,11 +186,16 @@ const timesCount = (times) => {
 const durationS = (song) => {
 	const songPlace = document.getElementById('duration');
 	const myUl = document.createElement('ul');
-	myUl.classList.add('text-center', 'p-0');
+	myUl.classList.add('text-end', 'pe-5');
 	song.forEach((songs) => {
 		const myLi = document.createElement('li');
+		myLi.classList.add('py-1');
 		myLi.innerHTML = `
-    ${timingCutted(songs.duration)}
+		<a href="#" class="btn p-0 border-0 d-flex flex-column flex-row-reverse align-items-center"
+		><span class='text-secondary'> ${timingCutted(
+			songs.duration
+		)}</span> <span class='empty'></span> </a>
+    
     `;
 		myUl.appendChild(myLi);
 		songPlace.appendChild(myUl);
@@ -227,8 +240,21 @@ const timingComplete = (duration) => {
 	return slots.reverse().join(' ');
 };
 
+// Event buttons
+const play = () => {
+	const track = document.querySelectorAll('#tracks-play');
+	track.forEach((tracks) => {
+		tracks.addEventListener('click', (e) => {
+			e.preventDefault();
+			let trackName1 = e.target.innerHTML;
+
+			console.log(trackName1);
+		});
+	});
+};
+
 // get
-const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/75621062';
+const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/album/' + albumId;
 fetch(myUrl, {
 	headers: {
 		'Content-Type': 'application/json',

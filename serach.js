@@ -3,7 +3,10 @@ const genres = document.getElementById('genreRow')
 const row = document.querySelector('#content-row')
 const artistRow = document.querySelector('#artist-row')
 const artists = document.querySelector('#artists')
+const albumRow = document.querySelector('#album-row')
+const albums = document.querySelector('#albums')
 let artistCardCount = 0
+let albumCardCount = 0
 let songsCardCount = 0
 
 // AUDIO
@@ -29,11 +32,15 @@ search.addEventListener('input', () => {
     row.classList.remove('d-none')
     artistRow.classList.remove('d-none')
     artists.classList.remove('d-none')
+    albumRow.classList.remove('d-none')
+    albums.classList.remove('d-none')
   } else {
     genres.classList.remove('d-none')
     row.classList.add('d-none')
     artistRow.classList.add('d-none')
     artists.classList.add('d-none')
+    albumRow.classList.add('d-none')
+    albums.classList.add('d-none')
   }
 
   // Esegui la richiesta solo se il termine di ricerca non è vuoto
@@ -97,6 +104,7 @@ search.addEventListener('input', () => {
               player.classList.remove('d-none')
 
               const song1 = data[index]
+              console.log('ciap', song1)
 
               const albumCover = document.getElementById('albumCover')
               albumCover.src = song1.album.cover_medium
@@ -274,7 +282,57 @@ search.addEventListener('input', () => {
             artistCardCount++
           }
         })
+
+        const uniqueAlbum = {}
+
+        data.forEach((album) => {
+          if (!uniqueAlbum[album.artist.id] && albumCardCount < 6) {
+            uniqueAlbum[album.artist.id] = album
+            console.log('ecco i tuoi album', album)
+
+            // Verifica se il nome dell'artista corrisponde alla tua ricerca
+            const albumName = album.artist.name.toLowerCase()
+            const searchTerm = search.value.toLowerCase() // Assumo che search sia l'input di ricerca
+
+            const newAlbumCol = document.createElement('div')
+            newAlbumCol.classList.add('col', 'col-12', 'col-sm-3', 'col-md-2')
+            newAlbumCol.innerHTML = `
+            <div class="card mb-4 shadow-sm d-flex">
+            <div class="d-flex justify-content-center">
+            <img
+              src="${album.album.cover_medium}"
+              class="bd-placeholder-img card-img-top rounded-circle m-2 shadow-lg"
+            />
+            </div>
+            <div class="card-body d-flex flex-column justify-content-between">
+              <p class="card-text text-nowrap text-truncate mb-0 mt-3 fw-bold fs-5">
+                ${album.album.title}
+              </p>
+              <p class="card-text text-nowrap text-truncate m-0 text-muted">
+                ${album.album.type}
+              </p>
+              <div
+                class="d-flex justify-content-between align-items-center"
+              >
+               
+              </div>
+            </div>
+          </div>
+        `
+
+            if (albumName.includes(searchTerm)) {
+              // Se il nome dell'artista corrisponde alla ricerca, inseriscilo all'inizio
+              albumRow.insertBefore(newAlbumCol, albumRow.firstChild)
+            } else {
+              // Altrimenti, inseriscilo in coda
+              albumRow.appendChild(newAlbumCol)
+            }
+
+            albumCardCount++
+          }
+        })
       })
+
       .catch((error) => {
         console.error('Errore durante la richiesta:', error)
       })
@@ -283,5 +341,7 @@ search.addEventListener('input', () => {
     genres.classList.remove('d-none')
     row.classList.add('d-none')
     artistRow.classList.add('d-none')
+    albumRow.classList.add('d-none')
+    albums.classList.add('d-none')
   }
 })

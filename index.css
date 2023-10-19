@@ -1,7 +1,9 @@
 #viola {
-	background: rgb(0, 0, 0);
-	background: linear-gradient(25deg, rgba(0, 0, 0, 1) 0%, rgba(30, 30, 30, 1) 95%);
-}
+	background: #000000;
+	background: -moz-linear-gradient(left, #000000 0%, #181818 90%, #1D1D1D 100%);
+	background: -webkit-linear-gradient(left, #000000 0%, #181818 90%, #1D1D1D 100%);
+	background: linear-gradient(to right, #000000 0%, #181818 90%, #1D1D1D 100%);
+	}
 
 #center {
 	background: #1e1e1e;
@@ -12,9 +14,19 @@
 	color: white;
 }
 
-ul {
+.altro card {font-size: 10px;}
+
+#crono {
 	list-style-type: none;
+	font-size: 9px;
+	padding-left: 10px;
+	margin-left: 2px;
+	
 }
+
+ul{list-style-type: none;}
+
+#crono li{margin-top: 7px;}
 
 a {
 	text-decoration: none;
@@ -24,3 +36,27 @@ a:link,
 a:visited {
 	color: white;
 }
+
+#friends{font-size: 10px;}
+
+
+
+#friends td {margin-left: 3px;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.card:hover{
+	background:#807e7e;
+    border-radius: 3px;
+    box-shadow: 0px 0px 9px #717272;}
+
+
+	#center {
+		background: #272727;
+		background: -moz-linear-gradient(top, #272727 0%, #181818 0%, #000000 100%);
+		background: -webkit-linear-gradient(top, #272727 0%, #181818 0%, #000000 100%);
+		background: linear-gradient(to bottom, #272727 0%, #181818 0%, #000000 100%);
+		}
+
+	

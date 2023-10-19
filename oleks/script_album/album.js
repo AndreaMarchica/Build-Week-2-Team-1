@@ -1,6 +1,8 @@
 const addressBarContent = new URLSearchParams(location.search);
-// const albumId = addressBarContent.get('albumId');
-const albumId = 9410110;
+
+const albumId = addressBarContent.get('albumId');
+console.log(albumId);
+// const albumId = 2504727281;
 //  92201 9410110
 // crea un canvas con l'immagine e ne ritorno il context 2d
 const draw = function (img) {
@@ -103,7 +105,7 @@ const albums = (album) => {
     </div>
   </div>
   <!-- buttons -->
-  <div id="main-track" class="ps-4">
+  <div id="main-track" class="ps-4 min-vh-100">
     <div class="row">
       <div class="col">
         <div class="d-flex align-items-center my-4">
@@ -260,15 +262,15 @@ const play = (data) => {
 
 const deco = JSON.parse(localStorage.getItem('song'));
 
-const doubleCheck = (storage) => {
-	const filterNumbers = storage.filter(
-		(item, index) => storage.indexOf(item) === index // se è strettamente uguale mi ristituisce un nuovo array senza i dupplicati
-		// se è diverso mi ristituisce array di numeri doppi
-	);
-	return filterNumbers;
-};
+// const doubleCheck = (storage) => {
+// 	const filterNumbers = storage.filter(
+// 		(item, index) => storage.indexOf(item) === index // se è strettamente uguale mi ristituisce un nuovo array senza i dupplicati
+// 		// se è diverso mi ristituisce array di numeri doppi
+// 	);
+// 	return filterNumbers;
+// };
 
-console.log(doubleCheck(deco));
+// console.log(doubleCheck(deco));
 // pay botton
 const playBtn = () => {
 	const playBtn = document.querySelector('#play');

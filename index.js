@@ -1,12 +1,13 @@
 const generatePlaylistsCard = function (arrayOfSongs) {
 	const rowPlaylist = document.getElementById('carousel');
 	arrayOfSongs.forEach((data) => {
+		const fullName = data.artist.name.replace(/ /g, '');
 		const newCol = document.createElement('div');
 		newCol.classList.add('carousel-item');
 		newCol.innerHTML = `	
    
     <!-- qui va la seconda card -->
-    <div class="card" id="viola">
+    <div class="card">
       <div class="row g-0">
         <div class="col-md-3">
           <img
@@ -22,9 +23,9 @@ const generatePlaylistsCard = function (arrayOfSongs) {
             <p>Ascolta il nuovo singolo di ${data.artist.name}!</p>
 
             <div class="dropdown">
-              <button type="button" class="btn btn-success">
+              <a href='artist.html?artistName=${fullName}' class="btn btn-success btnPlayLogo">
                 Play
-              </button>
+              </a>
               <button
                 type="button"
                 class="btn btn-outline-light">
@@ -78,6 +79,15 @@ const generatePlaylistsCard = function (arrayOfSongs) {
 	});
 };
 
+const close = () => {
+	const close = document.getElementById('close');
+	const friends = document.getElementById('friends');
+	close.addEventListener('click', (e) => {
+		e.preventDefault();
+		friends.classList.remove('d-md-block');
+	});
+};
+close();
 const getData = function () {
 	const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=celentano';
 	fetch(myUrl, {

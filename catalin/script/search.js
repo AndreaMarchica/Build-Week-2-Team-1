@@ -356,3 +356,13 @@ search.addEventListener('input', () => {
 		albums.classList.add('d-none');
 	}
 });
+
+const close = () => {
+	const close = document.getElementById('close');
+	const friends = document.getElementById('friends');
+	close.addEventListener('click', (e) => {
+		e.preventDefault();
+		friends.classList.remove('d-md-block');
+	});
+};
+close();

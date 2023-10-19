@@ -1,67 +1,66 @@
-const addressBarContent = new URLSearchParams(location.search)
+const addressBarContent = new URLSearchParams(location.search);
 
-const artistName = addressBarContent.get('artistName')
+const artistName = addressBarContent.get('artistName');
 
-const audio = document.getElementById('audio')
+const audio = document.getElementById('audio');
 
-const playButton = document.getElementById('play-button')
-const pauseButton = document.getElementById('pause-button')
-const nextButton = document.getElementById('next-button')
-const prevButton = document.getElementById('prev-button')
-const player = document.querySelector('.player-bar')
-const showButton = document.getElementById('show')
+const playButton = document.getElementById('play-button');
+const pauseButton = document.getElementById('pause-button');
+const nextButton = document.getElementById('next-button');
+const prevButton = document.getElementById('prev-button');
+const player = document.querySelector('.player-bar');
+const showButton = document.getElementById('show');
 
 const getData = function () {
-  const myUrl =
-    'https://striveschool-api.herokuapp.com/api/deezer/search?q=' + artistName
-  fetch(myUrl, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        if (res.status === 404) {
-          throw new Error('404 - Not Found')
-        } else if (res.status === 500) {
-          throw new Error('500 - Internal Server Error')
-        } else {
-          throw new Error('Generic ERROR')
-        }
-      }
-    })
-    .then((song) => {
-      console.log('API SPOTY', song)
-      const data = song.data
-      generateArtist(data)
-      generateLikeTracks(data)
-    })
-    .catch((err) => {
-      console.log('Si è verificato un errore:', err)
-    })
-}
-getData()
+	const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=' + artistName;
+	fetch(myUrl, {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	})
+		.then((res) => {
+			if (res.ok) {
+				return res.json();
+			} else {
+				if (res.status === 404) {
+					throw new Error('404 - Not Found');
+				} else if (res.status === 500) {
+					throw new Error('500 - Internal Server Error');
+				} else {
+					throw new Error('Generic ERROR');
+				}
+			}
+		})
+		.then((song) => {
+			console.log('API SPOTY', song);
+			const data = song.data;
+			generateArtist(data);
+			generateLikeTracks(data);
+		})
+		.catch((err) => {
+			console.log('Si è verificato un errore:', err);
+		});
+};
+getData();
 
 const generateArtist = (arrayOfSongs) => {
-  let numero = 1
-  // variabile contatore track
-  arrayOfSongs.forEach((data) => {
-    const row = document.getElementById('special-row')
-    const newColTrack = document.createElement('div')
-    newColTrack.classList.add('col-8', 'my-2')
-    const newColRank = document.createElement('div')
-    newColRank.classList.add('col-2')
-    const newColDuration = document.createElement('div')
-    newColDuration.classList.add('col-2')
-    const backgroundArtistDiv = document.getElementById('background-artist')
-    backgroundArtistDiv.style.backgroundImage = `url(${data.artist.picture_xl})`
-    backgroundArtistDiv.style.backgroundColor = 'gray'
+	let numero = 1;
+	// variabile contatore track
+	arrayOfSongs.forEach((data) => {
+		const row = document.getElementById('special-row');
+		const newColTrack = document.createElement('div');
+		newColTrack.classList.add('col-8', 'my-2');
+		const newColRank = document.createElement('div');
+		newColRank.classList.add('col-2');
+		const newColDuration = document.createElement('div');
+		newColDuration.classList.add('col-2');
+		const backgroundArtistDiv = document.getElementById('background-artist');
+		backgroundArtistDiv.style.backgroundImage = `url(${data.artist.picture_xl})`;
+		backgroundArtistDiv.style.backgroundColor = 'gray';
 
-    // sezione alta info autore
-    const artistInfo = document.getElementById('artist-info')
-    artistInfo.innerHTML = `
+		// sezione alta info autore
+		const artistInfo = document.getElementById('artist-info');
+		artistInfo.innerHTML = `
       <p class="mb-0"><svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
 
 
@@ -78,200 +77,200 @@ const generateArtist = (arrayOfSongs) => {
       </svg>Artista verificato</p>
       <h1 style="font-size:3em; font-weight:bold">${data.artist.name}</h1>
       <a href="${data.artist.link}">Scopri su deezer</a>
-      `
+      `;
 
-    // creo la colonna track
-    newColTrack.innerHTML = `
+		// creo la colonna track
+		newColTrack.innerHTML = `
 		<a class="song" style="text-decoration:none; color:white; cursor:pointer">
     <div class="d-flex align-items-center">
     <p class="m-0">${numero}</p>
     <img src="${data.album.cover_small}" class="mx-3">
     <p class="m-0">${data.title}</p>
     </div></a>
-    `
-    numero++
-    //numero++ Per incrementare il numero artista
+    `;
+		numero++;
+		//numero++ Per incrementare il numero artista
 
-    const startsongs = document.querySelectorAll('.song')
-    // startsongs.addEventListener('click', () => {
-    //
-    // })
-    startsongs.forEach((startsong, index) => {
-      startsong.addEventListener('click', (e) => {
-        e.preventDefault()
-        showButton.classList.add('pb-5')
-        showButton.closest('div').classList.add('pb-5')
+		const startsongs = document.querySelectorAll('.song');
+		// startsongs.addEventListener('click', () => {
+		//
+		// })
+		startsongs.forEach((startsong, index) => {
+			startsong.addEventListener('click', (e) => {
+				e.preventDefault();
+				showButton.classList.add('pb-5');
+				showButton.closest('div').classList.add('pb-5');
 
-        player.classList.remove('d-none')
+				player.classList.remove('d-none');
 
-        const data1 = arrayOfSongs[index]
+				const data1 = arrayOfSongs[index];
 
-        const albumCover = document.getElementById('albumCover')
-        albumCover.src = data1.album.cover_medium
+				const albumCover = document.getElementById('albumCover');
+				albumCover.src = data1.album.cover_medium;
 
-        const songName = document.getElementById('songName')
-        songName.innerText = data1.title
+				const songName = document.getElementById('songName');
+				songName.innerText = data1.title;
 
-        const artistName = document.getElementById('artistName')
-        artistName.innerText = data1.artist.name
+				const artistName = document.getElementById('artistName');
+				artistName.innerText = data1.artist.name;
 
-        let isPlaying = false
+				let isPlaying = false;
 
-        playButton.addEventListener('click', () => {
-          if (!isPlaying) {
-            audio.play()
-            isPlaying = true
-            playButton.style.display = 'none'
-            pauseButton.style.display = 'block'
-          }
-        })
+				playButton.addEventListener('click', () => {
+					if (!isPlaying) {
+						audio.play();
+						isPlaying = true;
+						playButton.style.display = 'none';
+						pauseButton.style.display = 'block';
+					}
+				});
 
-        pauseButton.addEventListener('click', () => {
-          if (isPlaying) {
-            audio.pause()
-            isPlaying = false
-            pauseButton.style.display = 'none'
-            playButton.style.display = 'block'
-          }
-        })
+				pauseButton.addEventListener('click', () => {
+					if (isPlaying) {
+						audio.pause();
+						isPlaying = false;
+						pauseButton.style.display = 'none';
+						playButton.style.display = 'block';
+					}
+				});
 
-        nextButton.addEventListener('click', () => {
-          // Aggiungi la logica per passare alla prossima traccia
-          // console.log('next')
-        })
+				nextButton.addEventListener('click', () => {
+					// Aggiungi la logica per passare alla prossima traccia
+					// console.log('next')
+				});
 
-        prevButton.addEventListener('click', () => {
-          // Aggiungi la logica per tornare alla traccia precedente
-        })
+				prevButton.addEventListener('click', () => {
+					// Aggiungi la logica per tornare alla traccia precedente
+				});
 
-        const repeat = document.querySelector('#repeat')
-        const repeatIcon = document.querySelector('#repeaticon')
+				const repeat = document.querySelector('#repeat');
+				const repeatIcon = document.querySelector('#repeaticon');
 
-        repeat.addEventListener('click', () => {
-          if (audio.loop) {
-            repeatIcon.classList.remove('fillactive')
-            audio.loop = false
-          } else {
-            repeatIcon.classList.add('fillactive')
-            audio.loop = true
-          }
-        })
+				repeat.addEventListener('click', () => {
+					if (audio.loop) {
+						repeatIcon.classList.remove('fillactive');
+						audio.loop = false;
+					} else {
+						repeatIcon.classList.add('fillactive');
+						audio.loop = true;
+					}
+				});
 
-        audio.addEventListener('ended', () => {
-          playButton.style.display = 'block'
-          pauseButton.style.display = 'none'
-          audio.currentTime = 0
-          progress.style.width = '0%'
-          if (!isPlaying) {
-            audio.play()
-            isPlaying = true
-            playButton.style.display = 'none'
-            pauseButton.style.display = 'block'
-          } else if (isPlaying) {
-            audio.pause()
-            isPlaying = false
-            pauseButton.style.display = 'none'
-            playButton.style.display = 'block'
-          }
-        })
+				audio.addEventListener('ended', () => {
+					playButton.style.display = 'block';
+					pauseButton.style.display = 'none';
+					audio.currentTime = 0;
+					progress.style.width = '0%';
+					if (!isPlaying) {
+						audio.play();
+						isPlaying = true;
+						playButton.style.display = 'none';
+						pauseButton.style.display = 'block';
+					} else if (isPlaying) {
+						audio.pause();
+						isPlaying = false;
+						pauseButton.style.display = 'none';
+						playButton.style.display = 'block';
+					}
+				});
 
-        // PROGRESS
+				// PROGRESS
 
-        const progress = document.getElementById('progress')
-        const progressBar = document.getElementById('progress-bar')
+				const progress = document.getElementById('progress');
+				const progressBar = document.getElementById('progress-bar');
 
-        audio.addEventListener('timeupdate', () => {
-          const currentTime = audio.currentTime
-          const duration = audio.duration
-          const progressPercent = (currentTime / duration) * 100
-          progress.style.width = progressPercent + '%'
-        })
+				audio.addEventListener('timeupdate', () => {
+					const currentTime = audio.currentTime;
+					const duration = audio.duration;
+					const progressPercent = (currentTime / duration) * 100;
+					progress.style.width = progressPercent + '%';
+				});
 
-        progressBar.addEventListener('click', (e) => {
-          const progressBarRect = progressBar.getBoundingClientRect()
-          const clickX = e.clientX - progressBarRect.left
-          const progressBarWidth = progressBarRect.width
-          const newTime = (clickX / progressBarWidth) * audio.duration
-          audio.currentTime = newTime
-        })
+				progressBar.addEventListener('click', (e) => {
+					const progressBarRect = progressBar.getBoundingClientRect();
+					const clickX = e.clientX - progressBarRect.left;
+					const progressBarWidth = progressBarRect.width;
+					const newTime = (clickX / progressBarWidth) * audio.duration;
+					audio.currentTime = newTime;
+				});
 
-        // VOLUME
+				// VOLUME
 
-        let initialVolume
-        let isMuted = false // Stato iniziale del volume
-        const range = document.getElementById('volume-range')
-        const volume = document.getElementById('volume')
+				let initialVolume;
+				let isMuted = false; // Stato iniziale del volume
+				const range = document.getElementById('volume-range');
+				const volume = document.getElementById('volume');
 
-        const song = document.getElementById('audio')
-        song.src = data1.preview
-        audio.play()
-        isPlaying = true
-        playButton.style.display = 'none'
-        pauseButton.style.display = 'block'
+				const song = document.getElementById('audio');
+				song.src = data1.preview;
+				audio.play();
+				isPlaying = true;
+				playButton.style.display = 'none';
+				pauseButton.style.display = 'block';
 
-        // Aggiungi un evento di ascolto per il cambio del valore del range
-        range.addEventListener('input', () => {
-          // Aggiorna il volume audio con il valore del range
-          audio.volume = range.value / 100
-          // Aggiorna il valore iniziale quando modifichi il range
-          initialVolume = range.value / 100
-        })
+				// Aggiungi un evento di ascolto per il cambio del valore del range
+				range.addEventListener('input', () => {
+					// Aggiorna il volume audio con il valore del range
+					audio.volume = range.value / 100;
+					// Aggiorna il valore iniziale quando modifichi il range
+					initialVolume = range.value / 100;
+				});
 
-        volume.addEventListener('click', () => {
-          if (isMuted) {
-            // Se è già stato disattivato, ripristina il valore iniziale
-            range.value = initialVolume * 100
-            audio.volume = initialVolume
-            isMuted = false
-          } else {
-            // Salva il valore corrente come valore iniziale, disattiva il volume
-            initialVolume = range.value / 100
-            audio.volume = 0
-            range.value = 0
-            isMuted = true
-          }
-        })
-      })
-    })
+				volume.addEventListener('click', () => {
+					if (isMuted) {
+						// Se è già stato disattivato, ripristina il valore iniziale
+						range.value = initialVolume * 100;
+						audio.volume = initialVolume;
+						isMuted = false;
+					} else {
+						// Salva il valore corrente come valore iniziale, disattiva il volume
+						initialVolume = range.value / 100;
+						audio.volume = 0;
+						range.value = 0;
+						isMuted = true;
+					}
+				});
+			});
+		});
 
-    // creo la colonna rank
-    newColRank.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${data.rank}</p></div>`
+		// creo la colonna rank
+		newColRank.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${data.rank}</p></div>`;
 
-    // creo la colonna duration
-    const time = `${data.duration}`
-    const minutes = Math.floor(time / 60)
-    const seconds = (time % 60).toString().padStart(2, '0')
-    newColDuration.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${minutes} : ${seconds}</p></div>`
+		// creo la colonna duration
+		const time = `${data.duration}`;
+		const minutes = Math.floor(time / 60);
+		const seconds = (time % 60).toString().padStart(2, '0');
+		newColDuration.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${minutes} : ${seconds}</p></div>`;
 
-    // appendo il tutto
-    row.appendChild(newColTrack)
-    row.appendChild(newColRank)
-    row.appendChild(newColDuration)
+		// appendo il tutto
+		row.appendChild(newColTrack);
+		row.appendChild(newColRank);
+		row.appendChild(newColDuration);
 
-    //  nascondo le track dalla 6 in poi
-    if (numero > 6) {
-      newColTrack.classList.add('d-none')
-      newColRank.classList.add('d-none')
-      newColDuration.classList.add('d-none')
-    }
+		//  nascondo le track dalla 6 in poi
+		if (numero > 6) {
+			newColTrack.classList.add('d-none');
+			newColRank.classList.add('d-none');
+			newColDuration.classList.add('d-none');
+		}
 
-    // pulsante mostra altro
+		// pulsante mostra altro
 
-    showButton.addEventListener('click', function () {
-      if (player) newColTrack.classList.remove('d-none')
-      newColRank.classList.remove('d-none')
-      newColDuration.classList.remove('d-none')
-      showButton.classList.add('d-none')
-    })
-  })
-}
+		showButton.addEventListener('click', function () {
+			if (player) newColTrack.classList.remove('d-none');
+			newColRank.classList.remove('d-none');
+			newColDuration.classList.remove('d-none');
+			showButton.classList.add('d-none');
+		});
+	});
+};
 
 // creo la colonna dei like
 const generateLikeTracks = function (arrayOfSongs) {
-  arrayOfSongs.forEach((data) => {
-    const imageCol = document.getElementById('like-image')
-    const textCol = document.getElementById('like-text')
-    imageCol.innerHTML = `
+	arrayOfSongs.forEach((data) => {
+		const imageCol = document.getElementById('like-image');
+		const textCol = document.getElementById('like-text');
+		imageCol.innerHTML = `
    <div class='row d-flex justify-content-between'>
 	 <div class=" rounded-pill position-relative col-3">
 	 <img
@@ -292,12 +291,12 @@ const generateLikeTracks = function (arrayOfSongs) {
 <p class='fs-6 opacity-50 m-0'>Di ${data.artist.name}</p>
 </div>
    </div>
- `
-    const iconImage = document.getElementById('icon-button')
+ `;
+		const iconImage = document.getElementById('icon-button');
 
-    textCol.innerHTML = ``
-  })
-}
+		textCol.innerHTML = ``;
+	});
+};
 
 // const showButton = document.getElementById("show");
 // const showAll = function () {
@@ -305,3 +304,13 @@ const generateLikeTracks = function (arrayOfSongs) {
 //   newColRank.classList.remove("d-none");
 //   newColDuration.classList.remove("d-none");
 // };
+
+const close = () => {
+	const close = document.getElementById('close');
+	const friends = document.getElementById('friends');
+	close.addEventListener('click', (e) => {
+		e.preventDefault();
+		friends.classList.remove('d-md-block');
+	});
+};
+close();

@@ -11,12 +11,12 @@
 			crossorigin="anonymous" />
 		<link rel="stylesheet" href="index.css" />
 	</head>
-	<body>
+	<body class="min-vh-100 bg-black">
 		<header></header>
 
 		<main>
 			<div class="main-container">
-				<div class="row">
+				<div class="row w-100 vh-100">
 					<div class="col col-2 d-none d-md-block bg-black text-white ps-2" id="sidebar">
 						<div class="dropdown">
 							<a
@@ -108,7 +108,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col col-lg-8 text-white" id="center">
+					<div class="col text-white" id="center">
 						<div class="row d-flex justify-content-between">
 							<div class="col">
 								<div class="row">
@@ -178,72 +178,15 @@
 									<div class="col">
 										<div id="carouselExample" class="carousel slide">
 											<div class="carousel-inner" id="carousel">
+												<!-- qui va la card -->
 												<div class="carousel-item active">
-													<!-- qui va la card -->
 													<div class="card" id="viola">
-														<div class="row g-0">
-															<div class="col-md-4">
+														<div class="row">
+															<div class="col-md-12 py-3">
 																<img
-																	src="assets/imgs/main/image-17.jpg"
-																	class="img-fluid mt-3 ms-3"
-																	alt="..."
-																	style="max-width: 180px" />
-															</div>
-															<div class="col-md-8 ps-0">
-																<div class="card-body ps-0">
-																	<h6 class="card-title">ALBUM</h6>
-																	<h3>VIOLA (feat.Salmo)</h3>
-																	<p>Fedez,Salmo</p>
-																	<p>Ascolta il nuovo singolo di Fedez&Salmo!</p>
-
-																	<div class="dropdown">
-																		<button type="button" class="btn btn-success">
-																			Play
-																		</button>
-																		<button
-																			type="button"
-																			class="btn btn-outline-light">
-																			Salva
-																		</button>
-																		<a
-																			class="btn"
-																			href="#"
-																			role="button"
-																			data-bs-toggle="dropdown"
-																			aria-expanded="false">
-																			<ion-icon
-																				name="ellipsis-horizontal-outline"></ion-icon>
-																		</a>
-
-																		<ul class="dropdown-menu z-1">
-																			<li>
-																				<a class="dropdown-item" href="#"
-																					>File</a
-																				>
-																			</li>
-																			<li>
-																				<a class="dropdown-item" href="#"
-																					>Modifica</a
-																				>
-																			</li>
-																			<li>
-																				<a class="dropdown-item" href="#"
-																					>Visualizza</a
-																				>
-																			</li>
-																			<li>
-																				<a class="dropdown-item" href="#"
-																					>Rirpoduzione</a
-																				>
-																			</li>
-																			<li>
-																				<a class="dropdown-item" href="#"
-																					>Assistenza</a
-																				>
-																			</li>
-																		</ul>
-																	</div>
-																</div>
+																	src="assets/imgs/banner4_spotify.webp"
+																	class="w-100"
+																	alt="spoty_logo" />
 															</div>
 														</div>
 													</div>
@@ -473,7 +416,9 @@
 							<div class="col col-lg-8"></div>
 							<div class="col col-lg-1"><ion-icon name="remove-outline"></ion-icon></div>
 							<div class="col col-1"><ion-icon name="albums-outline"></ion-icon></div>
-							<div class="col col-1"><ion-icon name="close-outline"></ion-icon></div>
+							<div class="col col-1" id="close">
+								<ion-icon name="close-outline"></ion-icon>
+							</div>
 
 							<div class="row d-flex flex-row justify-content-between">
 								<div class="col col-lg-8 flex-grow-1">Attività di amici</div>

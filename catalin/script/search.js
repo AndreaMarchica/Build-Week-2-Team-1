@@ -63,6 +63,8 @@ search.addEventListener('input', () => {
 				// console.log('Ecco il risultato', data)
 				row.innerHTML = '';
 				artistRow.innerHTML = '';
+				albumRow.innerHTML = '';
+				albumCardCount = 0;
 				artistCardCount = 0;
 				songsCardCount = 0;
 
@@ -253,8 +255,11 @@ search.addEventListener('input', () => {
 							'col-md-2',
 							'artist-album'
 						);
+
+						const fullName = songs.artist.name.replace(/ /g, '');
+
 						newArtistCol.innerHTML = `
-            <a href=artist.html?${songs.artist.id}>
+            <a href=artist.html?artistName=${fullName}>
             <div class="card shadow-sm d-flex h-100">
             <div class="d-flex justify-content-center">
             <img

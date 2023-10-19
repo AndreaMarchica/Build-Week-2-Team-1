@@ -115,3 +115,22 @@
 		transition: 0.3s;
 	}
 }
+#crono {
+	list-style-type: none;
+	font-size: 9px;
+	padding-left: 10px;
+	margin-left: 2px;
+}
+#crono li {
+	margin-top: 7px;
+}
+
+#friends {
+	font-size: 10px;
+}
+
+#friends td {
+	margin-left: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+}

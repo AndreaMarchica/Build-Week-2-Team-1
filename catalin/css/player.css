@@ -100,3 +100,7 @@
   bottom: 0px;
   width: 100%;
 }
+
+.fillactive {
+  fill: #1db954;
+}

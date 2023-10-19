@@ -46,6 +46,12 @@ a:visited {
 	height: 48px;
 }
 
-a:hover {
-	color: white;
+#like,
+#download,
+#options {
+	transition: 0.3s;
+	&:hover {
+		color: white;
+		transition: 0.3s;
+	}
 }

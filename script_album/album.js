@@ -116,14 +116,14 @@ const albums = (album) => {
               class="text-black"></ion-icon
           ></a>
 
-          <a href="#" class="btn fs-3 text-secondary" id="like"
-            ><ion-icon name="heart-outline"></ion-icon
+          <a href="#" class="btn fs-3 text-secondary" 
+            ><ion-icon name="heart-outline"  id="like"></ion-icon
           ></a>
-          <a href="#" class="btn fs-3 text-secondary" id="download"
-            ><ion-icon name="arrow-down-circle-outline"></ion-icon
+          <a href="#" class="btn fs-3 text-secondary" 
+            ><ion-icon name="arrow-down-circle-outline" id="download"></ion-icon
           ></a>
-          <a href="#" class="btn fs-3 text-secondary" id="options"
-            ><ion-icon name="ellipsis-horizontal-outline"></ion-icon
+          <a href="#" class="btn fs-3 text-secondary" 
+            ><ion-icon name="ellipsis-horizontal-outline" id="options"></ion-icon
           ></a>
         </div>
       </div>
@@ -178,7 +178,7 @@ const timesCount = (times) => {
 		myLi.classList.add('py-1');
 		myLi.innerHTML = `
     <a href="#" class="btn p-0 border-0 d-flex flex-column flex-row-reverse align-items-center"
-		><span class='text-secondary'>1</span> <span class='empty'></span> </a>
+		><span class='text-secondary'>${index.rank}</span> <span class='empty'></span> </a>
     `;
 		myUl.appendChild(myLi);
 		countPlace.appendChild(myUl);
@@ -276,7 +276,7 @@ const playBtn = () => {
 	playBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 
-		console.log('ciao');
+		console.log('play');
 	});
 };
 

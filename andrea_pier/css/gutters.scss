@@ -1,18 +1,17 @@
-@import "../scss/functions";
-@import "../scss/variables";
+// @import "../scss/functions";
+// @import "../scss/variables";
 
-$new-spacers: (
-  4: $spacer * 0,
+// $new-gutters: (
+//   4: $spacer * 0,
   
-);
+// );
 
 
 
-$spacers: map-merge($spacers, $new-spacers);
+// $spacers: map-merge($spacers, $new-gutters);
 
 
-@import "../scss/bootstrap.scss"
-
+// @import "../scss/bootstrap.scss"
 
 
 

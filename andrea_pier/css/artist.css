@@ -97,7 +97,12 @@ a {
   }
 }
 #arrow-mobile {
-  font-size: 2em;
-  border-radius: 1000px;
+  height: 35px;
+  width: 35px;
+  font-size: 1.5em;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.bi.bi-arrow-left {
+  position: relative;
+  right: 10px;
 }

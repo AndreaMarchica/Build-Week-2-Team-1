@@ -20,9 +20,9 @@
   <body>
     <header></header>
 
-    <main>
-      <div class="main-container">
-        <div class="row vh-100 w-100">
+    <main class="vh-100">
+      <div class="container-fluid vh-100">
+        <div class="row vh-100">
           <div
             class="col col-lg-2 col-md-2 bg-black text-white min-vh-100 d-none d-md-block"
             id="sidebar"
@@ -126,10 +126,12 @@
 
                 <!-- bottone back mobile -->
                 <div
-                  class="col d-block d-md-none col-2 m-3 p-3"
+                  class="col d-block d-flex d-md-none col-2 m-3 ms-3 p-3 rounded-circle"
                   id="arrow-mobile"
                 >
-                  <i class="bi bi-arrow-left"></i>
+                  <i
+                    class="bi bi-arrow-left d-flex justify-content-center align-items-center"
+                  ></i>
                 </div>
                 <!-- Profile -->
                 <div
@@ -202,8 +204,10 @@
                 </div>
 
                 <div class="col-12 col-md-4">
-                  <p class="d-flex flex-start fs-4">Brani che ti piacciono</p>
-                  <div class="row">
+                  <p class="d-flex flex-start fs-4 d-none d-md-block">
+                    Brani che ti piacciono
+                  </p>
+                  <div class="row my-3">
                     <div id="like-image" class="col"></div>
                     <!-- <div id="like-text" class="col col-8 ps-0"></div> -->
                   </div>

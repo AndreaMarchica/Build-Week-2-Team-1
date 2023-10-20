@@ -11,13 +11,13 @@ const generatePlaylistsCard = function (arrayOfSongs) {
 		newCol.innerHTML = `	
    
     <!-- qui va la seconda card -->
-    <div class="card">
+    <div class="card p-0"  id="viola">
       <div class="row g-0">
-        <div class="col-md-3">
+        <div class="col-md-3 p-0">
           <img
             src="${data.album.cover_big}"
             alt="..."
-            style="max-width: 180px" />
+            style="max-width: 180px" / class="pt-4 ps-4">
         </div>
         <div class="col-md-8 ps-0">
           <div class="card-body ps-0">
@@ -27,12 +27,12 @@ const generatePlaylistsCard = function (arrayOfSongs) {
             <p>Ascolta il nuovo singolo di ${data.artist.name}!</p>
 
             <div class="dropdown">
-              <a href='artist.html?artistName=${fullName}' class="btn btn-success btnPlayLogo">
+              <a href='artist.html?artistName=${fullName}' class="btn btn-success btnPlayLogo" style="border-radius: 20px;">
                 Play
               </a>
               <button
                 type="button"
-                class="btn btn-outline-light">
+                class="btn btn-outline-light ms-2" style="border-radius: 20px;">
                 Salva
               </button>
               <a
@@ -107,11 +107,11 @@ const buondi = (song) => {
         <img
           src="${element.album.cover_big}"
           class="img-fluid rounded-start"
-          alt="..." />
+          alt="..." / style="width: 80px;height: 80px;">
       </div>
       <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="card-title">${element.album.title}</h6>
+        <div class="card-body ps-0 ms-0 pt-4" >
+          <h6 class="card-title" style="font-size: 14px;">${element.album.title}</h6>
         </div>
       </div>
     </div>
@@ -133,7 +133,7 @@ const others = (song) => {
 		if (songsCardCount2 < 5) {
 			newCol.innerHTML = `
   
-  		<div class="card" >
+  		<div class="card" style="width:150px;height: 240px;font-size: 12px;" >
 									<img
 										src="${element.artist.picture}"
 										class="card-img-top"

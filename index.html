@@ -10,11 +10,12 @@
 			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 			crossorigin="anonymous" />
 		<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="assets/fonts/CircularStd-Black.otf">
 	</head>
 	<body class="min-vh-100 bg-black">
 		<header></header>
 
-		<main>
+		<main >
 			<div class="main-container">
 				<div class="row w-100 vh-100">
 					<div class="col col-2 d-none d-md-block bg-black text-white ps-2" id="sidebar">
@@ -37,39 +38,39 @@
 							</ul>
 						</div>
 						<div class="row">
-							<div class="col">
-								<ul>
+							<div class="col ps-3">
+								<ul class="ps-3" style="font-size: 14px;" id="mainlist">
 									<a href=""></a>
-									<li>
+									<li class="py-1">
 										<a href="index.html"
 											><ion-icon name="home-outline" class="me-2"></ion-icon>Home</a
 										>
 									</li>
-									<li>
+									<li class="py-1">
 										<a href="search.html"
 											><ion-icon name="search-outline" class="me-2"></ion-icon>Cerca</a
 										>
 									</li>
-									<li>
+									<li class="py-1">
 										<a href="#"
 											><ion-icon name="library-outline" class="me-2"></ion-icon>La tua
 											libreria</a
 										>
 									</li>
 									<br />
-									<li>
+									<li class="py-1">
 										<a href="#"
 											><ion-icon name="duplicate-outline" class="me-2"></ion-icon>Crea
 											Playlist</a
 										>
 									</li>
-									<li>
+									<li class="py-1">
 										<a href="#"
 											><ion-icon name="heart-outline" class="me-2"></ion-icon>Brani che
 											ti piacciono</a
 										>
 									</li>
-									<li>
+									<li class="py-1">
 										<a href="#"
 											><ion-icon name="bookmark-outline" class="me-2"></ion-icon>I tuoi
 											episodi</a
@@ -80,26 +81,26 @@
 						</div>
 						<hr class="mx-2" />
 						<div class="row">
-							<div class="col">
+							<div class="col ps-3">
 								<ul id="crono">
-									<li>early stage emily syndrome (sett-ott 2022)</li>
+									
 									<li>Be The Young</li>
 									<li>"..." cit.Kimiko (lug-ago 2022)</li>
 									<li>saggio vibes</li>
 									<li>main character energy (mag-giu 2022)</li>
 									<li>that fucking mood</li>
-									<li>VEE, CARLOTTA E GIACOMO VANNO A BODSIO</li>
+									
 									<li>An Emily Winchester kind of mood</li>
 									<li>landing page (mar-apr 2022)</li>
 									<li>2021 lol</li>
 									<li>Lidia&Emily</li>
-									<li>early stage emily syndrome (sett-ott 2022)</li>
+									
 									<li>Be The Young</li>
 									<li>"..." cit.Kimiko (lug-ago 2022)</li>
 									<li>saggio vibes</li>
 									<li>main character energy (mag-giu 2022)</li>
 									<li>that fucking mood</li>
-									<li>VEE, CARLOTTA E GIACOMO VANNO A BODSIO</li>
+									
 									<li>An Emily Winchester kind of mood</li>
 									<li>landing page (mar-apr 2022)</li>
 									<li>2021 lol</li>
@@ -115,7 +116,7 @@
 									<div class="col d-flex">
 										<!-- Buttons -->
 										<div
-											class="col col-2 m-3 d-flex align-items-center justify-content-between"
+											class="col col-2 m-3 d-flex align-items-center justify-content-between flex-grow-1"
 											id="arrow">
 											<div>
 												<a
@@ -141,10 +142,10 @@
 										<div class="col-8 d-flex justify-content-end">
 											<!-- Profile -->
 											<div
-												class="col col-4 justify-content-end d-flex align-items-center"
+												class="col col-6 justify-content-end d-flex align-items-center ps-5"
 												id="profile">
 												<div
-													class="btn-group rounded-pill bg-black d-flex align-items-center">
+													class="btn-group rounded-pill bg-black d-flex align-items-center ms-5">
 													<img
 														class="rounded-pill"
 														src="assets/imgs/main/image-6.jpg"
@@ -175,14 +176,14 @@
 								</div>
 
 								<div class="row">
-									<div class="col">
-										<div id="carouselExample" class="carousel slide">
+									<div class="col p-0 mx-3">
+										<div id="carouselExample" class="carousel slide" >
 											<div class="carousel-inner" id="carousel">
 												<!-- qui va la card -->
-												<div class="carousel-item active">
-													<div class="card" id="viola">
+												<div class="carousel-item active ">
+													<div class="card" >
 														<div class="row">
-															<div class="col-md-12 py-3">
+															<div class="col-md-12 ">
 																<img
 																	src="assets/imgs/banner4_spotify.webp"
 																	class="w-100"
@@ -199,39 +200,39 @@
 						</div>
 
 						<div class="row buongiorno pt-3" id="buongiorno">
-							<h5>Buongiorno</h5>
+							<h5 class="py-3">Buongiorno</h5>
 						</div>
-						<h5>Altro che ti piace</h5>
-						<div class="row d-flex flex-row justify-content-evenly altro" id="others"></div>
+						<h5 class="py-3">Altro che ti piace</h5>
+						<div class="row d-flex flex-row justify-content-evenly pe-4 altro" id="others"></div>
 						<div class="row d-flex flex-row justify-content-evenly altro">
-							<div class="row py-5">
-								<div class="col col-lg-3">
-									<strong><p>Azienda</p></strong>
-									<p>Chi Siamo</p>
-									<p>Opportunità di lavoro</p>
-									<p>For the Record</p>
-								</div>
-								<div class="col col-lg-3">
-									<strong><p>Community</p></strong>
-									<p>Per Artisti</p>
-									<p>Sviluppatori</p>
-									<p>Pubblicità</p>
-									<p>Investitori</p>
-									<p>Venditori</p>
+							<div class="row pt-5 py-5 my-5 ps-0" style="font-size: 14px;color: rgb(133, 130, 130);">
+								<div class="col col-lg-3 ps-0 pe-0">
+									<strong style="color: white;"><ul>Azienda</strong>
+									<li>Chi Siamo</li>
+									<li>Opportunità di lavoro</li>
+									<li>For the Record</li></ul>
 								</div>
 								<div class="col col-lg-2">
-									<strong><p>Link Utili</p></strong>
-									<p>Assistenza</p>
-									<p>App per cellulare gratuita</p>
-									<p>Diritti del consumatore</p>
+									<strong style="color: white;"><ul class="ps-0">Community</strong>
+									<li>Per Artisti</li>
+									<li>Sviluppatori</li>
+									<li>Pubblicità</li>
+									<li>Investitori</li>
+									<li>Venditori</li></ul>
 								</div>
-								<div class="col col-lg-3 align-items-end">
-									<ion-icon name="logo-instagram"></ion-icon
-									><ion-icon name="logo-twitter"></ion-icon
-									><ion-icon name="logo-facebook"></ion-icon>
+								<div class="col col-lg-3 ps-0">
+									<strong style="color: white;"><ul>Link Utili</strong>
+									<li>Assistenza</li>
+									<li>App per cellulare gratuita</li>
+									<li>Diritti del consumatore</li></ul>
 								</div>
-								<hr />
-								<div class="row">
+								<div class="col col-lg-3 align-items-end ms-5 ps-5" style="color: white;">
+									<ion-icon name="logo-instagram" style="width: 30px;height: 30px;"></ion-icon
+									><ion-icon name="logo-twitter"  class="ms-3" style="width: 30px;height: 30px;"></ion-icon
+									><ion-icon name="logo-facebook" class="ms-3 me-4"  style="width: 30px;height: 30px;"></ion-icon>
+								</div>
+								<hr class="py-3 mt-5"/>
+								<div class="row pt-3">
 									<div class="col col-lg-9 ps-0">
 										<ul id="footer">
 											<li><a href="#">Informazioni legali</a></li>
@@ -242,7 +243,7 @@
 											<li><a href="">Accessibilità</a></li>
 										</ul>
 									</div>
-									<div class="col col-lg-2 ms-5" style="font-size: 10px; text-align: end">
+									<div class="col col-lg-2 ms-5" style="font-size: 12px; text-align: end;color: rgb(133, 130, 130);">
 										© 2023 Spotify AB
 									</div>
 								</div>
@@ -259,36 +260,37 @@
 								<ion-icon name="close-outline"></ion-icon>
 							</div>
 
-							<div class="row d-flex flex-row justify-content-between">
-								<div class="col col-lg-8 flex-grow-1">Attività di amici</div>
+							<div class="row d-flex flex-row justify-content-evenly pt-3">
+								<div class="col col-lg-8 pb-3  " ><strong style="font-size: 12px;">Attività di amici</strong></div>
 
-								<div class="col col-lg-1" id="icon">
-									<ion-icon name="person-outline"></ion-icon>
-								</div>
-								<div class="col col-lg-1"><ion-icon name="close-outline"></ion-icon></div>
+								<div class="col col-lg-1 ps-4 "  ><ion-icon name="person-outline"></ion-icon></div>
+									<div  class="col col-lg-1 ps-1"><ion-icon name="close-outline"></ion-icon></div>
+										
+								
 							</div>
 
-							<div class="row">
+							<div class="ms-2">
+							<div class="row d-flex flex-row justify-content-between py-2">
 								<div class="col col-lg-3">
-									<ion-icon name="person-circle-outline"></ion-icon>
+									<ion-icon name="person-circle-outline" style="width: 30px;height: 30px;"></ion-icon>
 								</div>
-								<div class="col col-lg-5">Mario Rossi</div>
-								<div class="col col-lg-3">4 min</div>
+								<div class="col col-lg-5 flex-grow-1 ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
 							</div>
-							<div class="row">
+							<div class="row py-2">
 								<div class="col col-lg-3">
-									<ion-icon name="person-circle-outline"></ion-icon>
+									<ion-icon name="person-circle-outline"  style="width: 30px;height: 30px;"></ion-icon>
 								</div>
-								<div class="col col-lg-5">Mario Rossi</div>
-								<div class="col col-lg-3">4 min</div>
+								<div class="col col-lg-5  ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
 							</div>
-							<div class="row">
+							<div class="row py-2">
 								<div class="col col-lg-3">
-									<ion-icon name="person-circle-outline"></ion-icon>
+									<ion-icon name="person-circle-outline"  style="width: 30px;height: 30px;"></ion-icon>
 								</div>
-								<div class="col col-lg-5">Mario Rossi</div>
-								<div class="col col-lg-3">4 min</div>
-							</div>
+								<div class="col col-lg-5 ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
+							</div></div>
 						</div>
 					</div>
 				</div>

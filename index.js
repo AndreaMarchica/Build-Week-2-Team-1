@@ -26,8 +26,8 @@ const generatePlaylistsCard = function (arrayOfSongs) {
             <p>${data.artist.name}</p>
             <p>Ascolta il nuovo singolo di ${data.artist.name}!</p>
 
-            <div class="dropdown">
-              <a href='artist.html?artistName=${fullName}' class="btn btn-success btnPlayLogo">
+            <div class="dropdown d-flex">
+              <a href='artist.html?artistName=${fullName}' class="btn btn-success btnPlayLogo me-2">
                 Play
               </a>
               <button
@@ -35,43 +35,19 @@ const generatePlaylistsCard = function (arrayOfSongs) {
                 class="btn btn-outline-light">
                 Salva
               </button>
-              <a
-                class="btn"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <ion-icon
-                  name="ellipsis-horizontal-outline"></ion-icon>
-              </a>
 
-              <ul class="dropdown-menu z-1">
-                <li>
-                  <a class="dropdown-item" href="#"
-                    >File</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    >Modifica</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    >Visualizza</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    >Rirpoduzione</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    >Assistenza</a
-                  >
-                </li>
-              </ul>
+
+              <div class="dropdown">
+                    <button class=
+                    "btn  " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    </button>
+                      <ul class="dropdown-menu dropdown-menu-bottom">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+              </div>
             </div>
           </div>
         

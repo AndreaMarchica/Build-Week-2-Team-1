@@ -330,7 +330,7 @@ const start = function () {
 
 	// se necessario, aggiunge degli '0' per rendere il risultato un valido colore esadecimale
 	let mostRecurrentHex = pad(mostRecurrent);
-
+	console.log('this is the color', mostRecurrent);
 	// console.log del risultato
 	generateBackground(mostRecurrent);
 };
@@ -480,3 +480,13 @@ const playerSongs = (urlCover, urlSongName, urlArtistName, urlSong) => {
 		}
 	});
 };
+
+const close = () => {
+	const close = document.getElementById('close');
+	const friends = document.getElementById('friends');
+	close.addEventListener('click', (e) => {
+		e.preventDefault();
+		friends.classList.remove('d-md-block');
+	});
+};
+close();

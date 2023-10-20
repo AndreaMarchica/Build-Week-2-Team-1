@@ -2,6 +2,15 @@ const addressBarContent = new URLSearchParams(location.search);
 
 const artistName = addressBarContent.get('artistName');
 
+const audio = document.getElementById('audio');
+
+const playButton = document.getElementById('play-button');
+const pauseButton = document.getElementById('pause-button');
+const nextButton = document.getElementById('next-button');
+const prevButton = document.getElementById('prev-button');
+const player = document.querySelector('.player-bar');
+const showButton = document.getElementById('show');
+
 const getData = function () {
 	const myUrl = 'https://striveschool-api.herokuapp.com/api/deezer/search?q=' + artistName;
 	fetch(myUrl, {
@@ -72,14 +81,157 @@ const generateArtist = (arrayOfSongs) => {
 
 		// creo la colonna track
 		newColTrack.innerHTML = `
+		<a class="song" style="text-decoration:none; color:white; cursor:pointer">
     <div class="d-flex align-items-center">
     <p class="m-0">${numero}</p>
     <img src="${data.album.cover_small}" class="mx-3">
     <p class="m-0">${data.title}</p>
-    </div>
+    </div></a>
     `;
 		numero++;
 		//numero++ Per incrementare il numero artista
+
+		const startsongs = document.querySelectorAll('.song');
+		// startsongs.addEventListener('click', () => {
+		//
+		// })
+		startsongs.forEach((startsong, index) => {
+			startsong.addEventListener('click', (e) => {
+				e.preventDefault();
+				showButton.classList.add('pb-5');
+				showButton.closest('div').classList.add('pb-5');
+
+				player.classList.remove('d-none');
+
+				const data1 = arrayOfSongs[index];
+
+				const albumCover = document.getElementById('albumCover');
+				albumCover.src = data1.album.cover_medium;
+
+				const songName = document.getElementById('songName');
+				songName.innerText = data1.title;
+
+				const artistName = document.getElementById('artistName');
+				artistName.innerText = data1.artist.name;
+
+				let isPlaying = false;
+
+				playButton.addEventListener('click', () => {
+					if (!isPlaying) {
+						audio.play();
+						isPlaying = true;
+						playButton.style.display = 'none';
+						pauseButton.style.display = 'block';
+					}
+				});
+
+				pauseButton.addEventListener('click', () => {
+					if (isPlaying) {
+						audio.pause();
+						isPlaying = false;
+						pauseButton.style.display = 'none';
+						playButton.style.display = 'block';
+					}
+				});
+
+				nextButton.addEventListener('click', () => {
+					// Aggiungi la logica per passare alla prossima traccia
+					// console.log('next')
+				});
+
+				prevButton.addEventListener('click', () => {
+					// Aggiungi la logica per tornare alla traccia precedente
+				});
+
+				const repeat = document.querySelector('#repeat');
+				const repeatIcon = document.querySelector('#repeaticon');
+
+				repeat.addEventListener('click', () => {
+					if (audio.loop) {
+						repeatIcon.classList.remove('fillactive');
+						audio.loop = false;
+					} else {
+						repeatIcon.classList.add('fillactive');
+						audio.loop = true;
+					}
+				});
+
+				audio.addEventListener('ended', () => {
+					playButton.style.display = 'block';
+					pauseButton.style.display = 'none';
+					audio.currentTime = 0;
+					progress.style.width = '0%';
+					if (!isPlaying) {
+						audio.play();
+						isPlaying = true;
+						playButton.style.display = 'none';
+						pauseButton.style.display = 'block';
+					} else if (isPlaying) {
+						audio.pause();
+						isPlaying = false;
+						pauseButton.style.display = 'none';
+						playButton.style.display = 'block';
+					}
+				});
+
+				// PROGRESS
+
+				const progress = document.getElementById('progress');
+				const progressBar = document.getElementById('progress-bar');
+
+				audio.addEventListener('timeupdate', () => {
+					const currentTime = audio.currentTime;
+					const duration = audio.duration;
+					const progressPercent = (currentTime / duration) * 100;
+					progress.style.width = progressPercent + '%';
+				});
+
+				progressBar.addEventListener('click', (e) => {
+					const progressBarRect = progressBar.getBoundingClientRect();
+					const clickX = e.clientX - progressBarRect.left;
+					const progressBarWidth = progressBarRect.width;
+					const newTime = (clickX / progressBarWidth) * audio.duration;
+					audio.currentTime = newTime;
+				});
+
+				// VOLUME
+
+				let initialVolume;
+				let isMuted = false; // Stato iniziale del volume
+				const range = document.getElementById('volume-range');
+				const volume = document.getElementById('volume');
+
+				const song = document.getElementById('audio');
+				song.src = data1.preview;
+				audio.play();
+				isPlaying = true;
+				playButton.style.display = 'none';
+				pauseButton.style.display = 'block';
+
+				// Aggiungi un evento di ascolto per il cambio del valore del range
+				range.addEventListener('input', () => {
+					// Aggiorna il volume audio con il valore del range
+					audio.volume = range.value / 100;
+					// Aggiorna il valore iniziale quando modifichi il range
+					initialVolume = range.value / 100;
+				});
+
+				volume.addEventListener('click', () => {
+					if (isMuted) {
+						// Se è già stato disattivato, ripristina il valore iniziale
+						range.value = initialVolume * 100;
+						audio.volume = initialVolume;
+						isMuted = false;
+					} else {
+						// Salva il valore corrente come valore iniziale, disattiva il volume
+						initialVolume = range.value / 100;
+						audio.volume = 0;
+						range.value = 0;
+						isMuted = true;
+					}
+				});
+			});
+		});
 
 		// creo la colonna rank
 		newColRank.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${data.rank}</p></div>`;
@@ -103,9 +255,9 @@ const generateArtist = (arrayOfSongs) => {
 		}
 
 		// pulsante mostra altro
-		const showButton = document.getElementById('show');
+
 		showButton.addEventListener('click', function () {
-			newColTrack.classList.remove('d-none');
+			if (player) newColTrack.classList.remove('d-none');
 			newColRank.classList.remove('d-none');
 			newColDuration.classList.remove('d-none');
 			showButton.classList.add('d-none');
@@ -152,3 +304,13 @@ const generateLikeTracks = function (arrayOfSongs) {
 //   newColRank.classList.remove("d-none");
 //   newColDuration.classList.remove("d-none");
 // };
+
+const close = () => {
+	const close = document.getElementById('close');
+	const friends = document.getElementById('friends');
+	close.addEventListener('click', (e) => {
+		e.preventDefault();
+		friends.classList.remove('d-md-block');
+	});
+};
+close();

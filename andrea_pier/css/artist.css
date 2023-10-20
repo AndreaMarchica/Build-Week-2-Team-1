@@ -80,7 +80,12 @@ a {
   padding-top: 1.3em;
   padding-bottom: 1.3em;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 #show {
   margin-bottom: 7.5em;

@@ -79,13 +79,13 @@ const buondi = (song) => {
   
   <div class="card mb-3" style="max-width: 540px">
     <div class="row g-0">
-      <div class="col-md-4">
+      <div class="col col-6 col-md-4">
         <img
           src="${element.album.cover_big}"
           class="img-fluid rounded-start"
           alt="..." / style="width: 80px;height: 80px;">
       </div>
-      <div class="col-md-8">
+      <div class="col col-6 col-md-8">
         <div class="card-body ps-0 ms-0 pt-4" >
           <h6 class="card-title" style="font-size: 14px;">${element.album.title}</h6>
         </div>
@@ -105,7 +105,7 @@ const others = (song) => {
 	const others = document.getElementById('others');
 	song.forEach((element) => {
 		const newCol = document.createElement('div');
-		newCol.classList.add('col', 'col-md-2');
+		newCol.classList.add('col','col-6', 'col-md-2');
 		if (songsCardCount2 < 5) {
 			newCol.innerHTML = `
   

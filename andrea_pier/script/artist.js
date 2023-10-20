@@ -53,7 +53,7 @@ const generateArtist = (arrayOfSongs) => {
 		const newColRank = document.createElement('div');
 		newColRank.classList.add('col-2');
 		const newColDuration = document.createElement('div');
-		newColDuration.classList.add('col-2');
+		newColDuration.classList.add('col-2', 'd-flex', 'justify-content-center');
 		const backgroundArtistDiv = document.getElementById('background-artist');
 		backgroundArtistDiv.style.backgroundImage = `url(${data.artist.picture_xl})`;
 		backgroundArtistDiv.style.backgroundColor = 'gray';
@@ -76,7 +76,7 @@ const generateArtist = (arrayOfSongs) => {
       </g>
       </svg>Artista verificato</p>
       <h1 style="font-size:3em; font-weight:bold">${data.artist.name}</h1>
-      <a href="${data.artist.link}">Scopri su deezer</a>
+      <a href="${data.artist.link}">Scopri su Deezer</a>
       `;
 
 		// creo la colonna track
@@ -85,7 +85,10 @@ const generateArtist = (arrayOfSongs) => {
     <div class="d-flex align-items-center">
     <p class="m-0">${numero}</p>
     <img src="${data.album.cover_small}" class="mx-3">
-    <p class="m-0">${data.title}</p>
+    <div class="d-flex flex-column ">
+    <p class="m-0 fs-5  ">${data.title}</p>
+    <p class="m-0 fs-6 d-md-none opacity-50 ">${data.rank}</p>
+</div>
     </div></a>
     `;
 		numero++;
@@ -234,13 +237,14 @@ const generateArtist = (arrayOfSongs) => {
 		});
 
 		// creo la colonna rank
-		newColRank.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${data.rank}</p></div>`;
+		newColRank.innerHTML = `<div class="d-flex d-none d-md-block align-items-center h-100"><p class="m-0">${data.rank}</p></div>`;
 
 		// creo la colonna duration
 		const time = `${data.duration}`;
 		const minutes = Math.floor(time / 60);
 		const seconds = (time % 60).toString().padStart(2, '0');
-		newColDuration.innerHTML = `<div class="d-flex align-items-center h-100"><p class="m-0">${minutes} : ${seconds}</p></div>`;
+		newColDuration.innerHTML = `<div class="d-flex d-none d-md-block align-items-center h-100"><p class="m-0">${minutes} : ${seconds}</p></div>
+    <div><i class="bi bi-three-dots-vertical d-md-none"></i></div>`;
 
 		// appendo il tutto
 		row.appendChild(newColTrack);
@@ -271,8 +275,8 @@ const generateLikeTracks = function (arrayOfSongs) {
 		const imageCol = document.getElementById('like-image');
 		const textCol = document.getElementById('like-text');
 		imageCol.innerHTML = `
-   <div class='row d-flex justify-content-between'>
-	 <div class=" rounded-pill position-relative col-3">
+   <div class='row d-flex align-items-center  justify-content-md-between'>
+	 <div class=" rounded-pill me-0 position-relative col-4">
 	 <img
 		 class="rounded-pill"
 		 src="${data.artist.picture}"
@@ -286,9 +290,11 @@ const generateLikeTracks = function (arrayOfSongs) {
 		 </i>
 	 </div>
  </div>
-<div class='col-8'>
- <p class='mb-0'>Hai messo Mi piace a 11 brani</p>
-<p class='fs-6 opacity-50 m-0'>Di ${data.artist.name}</p>
+<div class='col-8 ps-0'>
+<h5 class="d-md-none mb-0">Brani che ti piacciono</h5>
+<p class="d-md-none mb-0 ">11 brani di ${data.artist.name}</p>
+ <p class='mb-0 d-none d-md-block '>Hai messo Mi piace a 11 brani</p>
+<p class='fs-6 opacity-50 m-0 d-none d-md-block'>Di ${data.artist.name}</p>
 </div>
    </div>
  `;

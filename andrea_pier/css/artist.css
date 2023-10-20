@@ -86,6 +86,7 @@ a {
     rgba(0, 0, 0, 1) 50%,
     rgba(0, 0, 0, 0.5) 100%
   );
+  width: 100vw;
 }
 #show {
   margin-bottom: 7.5em;

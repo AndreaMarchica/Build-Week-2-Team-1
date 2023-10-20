@@ -21,8 +21,8 @@
     <header></header>
 
     <main class="vh-100">
-      <div class="container-fluid vh-100">
-        <div class="row vh-100">
+      <div class="container-fluid p-0 vh-100">
+        <div class="row vh-100 w-100">
           <div
             class="col col-lg-2 col-md-2 bg-black text-white min-vh-100 d-none d-md-block"
             id="sidebar"
@@ -126,7 +126,7 @@
 
                 <!-- bottone back mobile -->
                 <div
-                  class="col d-block d-flex d-md-none col-2 m-3 ms-3 p-3 rounded-circle"
+                  class="col d-block d-flex d-md-none col-2 m-3 ms-5 p-3 rounded-circle"
                   id="arrow-mobile"
                 >
                   <i
@@ -170,8 +170,12 @@
               <div id="artist-info" class="m-4"></div>
             </div>
             <div class="row mx-3">
-              <div class="col col-12 my-4 d-flex">
-                <div>
+              <div class="col col-12 my-4 d-flex align-items-center">
+                <div class="order-3 flex-grow-1 d-md-none"></div>
+                <div class="order-4 d-md-none me-3 fs-3">
+                  <i class="bi bi-shuffle"></i>
+                </div>
+                <div class="order-5 order-md-1">
                   <a
                     href="#"
                     id="play"
@@ -182,13 +186,19 @@
                     ></ion-icon
                   ></a>
                 </div>
+
                 <button
                   type="button"
-                  class="mx-4 btn btn-sm btn-outline-secondary text-white px-3"
+                  class="mx-0 mx-md-4 btn btn-sm btn-outline-secondary text-white px-3 order-1 order-md-2"
                 >
                   FOLLOWING
                 </button>
-                <i class="bi bi-three-dots"></i>
+                <i
+                  class="bi bi-three-dots mx-3 mx-md-0 d-none d-md-block order-2 order-md-3"
+                ></i>
+                <i
+                  class="bi bi-three-dots-vertical mx-3 d-md-none mx-md-0 order-2 order-md-3"
+                ></i>
               </div>
               <div class="d-flex flex-column flex-column-reverse flex-md-row">
                 <div class="col-12 col-md-8">
@@ -196,7 +206,7 @@
                   <div class="row">
                     <div class="col">
                       <!-- colonna orizzontale canzoni artista -->
-                      <div class="row" id="special-row">
+                      <div class="row align-items-center" id="special-row">
                         <!-- qui verranno generate dinamicamente in JS 3 col(foto - rank - durata) -->
                       </div>
                     </div>
@@ -222,7 +232,10 @@
                 >
                   VISUALIZZA ALTRO
                 </button>
-                <div id="bottom-bar" class="row position-fixed d-md-none">
+                <div
+                  id="bottom-bar"
+                  class="row position-fixed d-md-none container-fluid"
+                >
                   <div class="col col-4 d-md-none px-0">
                     <a href="" class="d-flex flex-column align-items-center"
                       ><ion-icon name="home-outline" class="fs-3"></ion-icon

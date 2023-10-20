@@ -1,0 +1,94 @@
+.dropdown-menu{background: rgb(88,153,80);
+	background: linear-gradient(0deg, rgba(88,153,80,1) 7%, rgba(79,176,96,1) 33%, rgba(105,253,45,1) 70%, rgba(159,223,133,1) 100%) ;}
+
+body {font-family: url(assets/fonts/CircularStd-Bold.otf);}
+
+#viola {
+	background: #000000;
+	background: -moz-linear-gradient(left, #000000 0%, #181818 90%, #1d1d1d 100%);
+	background: -webkit-linear-gradient(left, #000000 0%, #181818 90%, #1d1d1d 100%);
+	background: linear-gradient(to right, #000000 0%, #181818 90%, #1d1d1d 100%);
+}
+
+#center {
+	background: #1e1e1e;
+}
+
+.card {
+	background-color: rgba(43, 43, 43, 0.8);
+	color: white;
+}
+
+
+
+
+.altro card {
+	font-size: 10px;
+}
+
+#crono {
+	list-style-type: none;
+	font-size: 9px;
+	padding-left: 10px;
+	margin-left: 2px;
+}
+
+#mainlist li:hover{font-size: 16px;}
+
+ul {
+	list-style-type: none;
+}
+
+#crono li {
+	margin-top: 7px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link,
+a:visited {
+	color: white;
+}
+
+#friends {
+	font-size: 11px;
+}
+
+#friends td {
+	margin-left: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.card:hover {
+	background: #807e7e;
+	border-radius: 3px;
+	box-shadow: 0px 0px 9px #717272;
+}
+
+#center {
+	background: #202020;
+	background: -moz-linear-gradient(top, #272727 0%, #181818 0%, #000000 100%);
+	background: -webkit-linear-gradient(top, #272727 0%, #181818 0%, #000000 100%);
+	background: linear-gradient(to bottom, #272727 0%, #181818 0%, #000000 100%);
+}
+
+#footer li {
+	display: inline;
+	font-size: 12px;
+	margin-left: 4px;
+}
+
+#footer li:hover{color: #e9e7e7;}
+
+#footer {
+	padding-left: 0;
+}
+
+a:link,
+a:visited {
+	color: unset;
+}
+

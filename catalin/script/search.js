@@ -146,19 +146,6 @@ search.addEventListener('input', () => {
 								// Aggiungi la logica per tornare alla traccia precedente
 							});
 
-							const repeat = document.querySelector('#repeat');
-							const repeatIcon = document.querySelector('#repeaticon');
-
-							repeat.addEventListener('click', () => {
-								if (audio.loop) {
-									repeatIcon.classList.remove('fillactive');
-									audio.loop = false;
-								} else {
-									repeatIcon.classList.add('fillactive');
-									audio.loop = true;
-								}
-							});
-
 							audio.addEventListener('ended', () => {
 								playButton.style.display = 'block';
 								pauseButton.style.display = 'none';
@@ -233,6 +220,18 @@ search.addEventListener('input', () => {
 									isMuted = true;
 								}
 							});
+						});
+						const repeat = document.querySelector('#repeat');
+						const repeatIcon = document.querySelector('#repeaticon');
+
+						repeat.addEventListener('click', () => {
+							if (audio.loop) {
+								repeatIcon.classList.remove('fillactive');
+								audio.loop = false;
+							} else {
+								repeatIcon.classList.add('fillactive');
+								audio.loop = true;
+							}
 						});
 					});
 				});

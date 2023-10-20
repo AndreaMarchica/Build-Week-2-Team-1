@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Spotify</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous" />
+		<link rel="stylesheet" href="index.css" />
+	<link rel="stylesheet" href="assets/fonts/CircularStd-Black.otf">
+	</head>
+	<body class="min-vh-100 bg-black">
+		<header></header>
+
+		<main >
+			<div class="main-container">
+				<div class="row w-100 vh-100">
+					<div class="col col-2 d-none d-md-block bg-black text-white ps-2" id="sidebar">
+						<div class="dropdown">
+							<a
+								class="btn"
+								href="#"
+								role="button"
+								data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+							</a>
+
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">File</a></li>
+								<li><a class="dropdown-item" href="#">Modifica</a></li>
+								<li><a class="dropdown-item" href="#">Visualizza</a></li>
+								<li><a class="dropdown-item" href="#">Rirpoduzione</a></li>
+								<li><a class="dropdown-item" href="#">Assistenza</a></li>
+							</ul>
+						</div>
+						<div class="row">
+							<div class="col ps-3">
+								<ul class="ps-3" style="font-size: 14px;" id="mainlist">
+									<a href=""></a>
+									<li class="py-1">
+										<a href="index.html"
+											><ion-icon name="home-outline" class="me-2"></ion-icon>Home</a
+										>
+									</li>
+									<li class="py-1">
+										<a href="search.html"
+											><ion-icon name="search-outline" class="me-2"></ion-icon>Cerca</a
+										>
+									</li>
+									<li class="py-1">
+										<a href="#"
+											><ion-icon name="library-outline" class="me-2"></ion-icon>La tua
+											libreria</a
+										>
+									</li>
+									<br />
+									<li class="py-1">
+										<a href="#"
+											><ion-icon name="duplicate-outline" class="me-2"></ion-icon>Crea
+											Playlist</a
+										>
+									</li>
+									<li class="py-1">
+										<a href="#"
+											><ion-icon name="heart-outline" class="me-2"></ion-icon>Brani che
+											ti piacciono</a
+										>
+									</li>
+									<li class="py-1">
+										<a href="#"
+											><ion-icon name="bookmark-outline" class="me-2"></ion-icon>I tuoi
+											episodi</a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<hr class="mx-2" />
+						<div class="row">
+							<div class="col ps-3">
+								<ul id="crono">
+									
+									<li>Be The Young</li>
+									<li>"..." cit.Kimiko (lug-ago 2022)</li>
+									<li>saggio vibes</li>
+									<li>main character energy (mag-giu 2022)</li>
+									<li>that fucking mood</li>
+									
+									<li>An Emily Winchester kind of mood</li>
+									<li>landing page (mar-apr 2022)</li>
+									<li>2021 lol</li>
+									<li>Lidia&Emily</li>
+									
+									<li>Be The Young</li>
+									<li>"..." cit.Kimiko (lug-ago 2022)</li>
+									<li>saggio vibes</li>
+									<li>main character energy (mag-giu 2022)</li>
+									<li>that fucking mood</li>
+									
+									<li>An Emily Winchester kind of mood</li>
+									<li>landing page (mar-apr 2022)</li>
+									<li>2021 lol</li>
+									<li>Lidia&Emily</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col text-white" id="center">
+						<div class="row d-flex justify-content-between">
+							<div class="col">
+								<div class="row">
+									<div class="col d-flex">
+										<!-- Buttons -->
+										<div
+											class="col col-2 m-3 d-flex align-items-center justify-content-between flex-grow-1"
+											id="arrow">
+											<div>
+												<a
+													href="#"
+													type="button"
+													data-bs-target="#carouselExample"
+													data-bs-slide="prev">
+													<ion-icon
+														name="chevron-back-outline"
+														class="fs-3 rounded-circle bg-black"></ion-icon>
+												</a>
+												<a
+													href="#"
+													type="button"
+													data-bs-target="#carouselExample"
+													data-bs-slide="next">
+													<ion-icon
+														name="chevron-forward-outline"
+														class="fs-3 rounded-circle bg-black"></ion-icon>
+												</a>
+											</div>
+										</div>
+										<div class="col-8 d-flex justify-content-end">
+											<!-- Profile -->
+											<div
+												class="col col-6 justify-content-end d-flex align-items-center ps-5"
+												id="profile">
+												<div
+													class="btn-group rounded-pill bg-black d-flex align-items-center ms-5">
+													<img
+														class="rounded-pill"
+														src="assets/imgs/main/image-6.jpg"
+														width="30"
+														height="30"
+														alt="avatar logo" />
+													<span class="ms-2">Mr. Miyagi</span>
+													<button
+														type="button"
+														class="btn btn-dark dropdown-toggle bg-black ms-2 rounded-end-pill border-0"
+														data-bs-toggle="dropdown"
+														aria-expanded="false"></button>
+													<ul class="dropdown-menu dropdown-menu-end mt-2">
+														<li>
+															<a class="dropdown-item" href="profile.html"
+																>Profile</a
+															>
+														</li>
+														<li>
+															<a class="dropdown-item" href="#">Settings</a>
+														</li>
+														<li><a class="dropdown-item" href="#">Log Out</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col p-0 mx-3">
+										<div id="carouselExample" class="carousel slide" >
+											<div class="carousel-inner" id="carousel">
+												<!-- qui va la card -->
+												<div class="carousel-item active ">
+													<div class="card" >
+														<div class="row">
+															<div class="col-md-12 ">
+																<img
+																	src="assets/imgs/banner4_spotify.webp"
+																	class="w-100"
+																	alt="spoty_logo" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row buongiorno pt-3" id="buongiorno">
+							<h5 class="py-3">Buongiorno</h5>
+						</div>
+						<h5 class="py-3">Altro che ti piace</h5>
+						<div class="row d-flex flex-row justify-content-evenly pe-4 altro" id="others"></div>
+						<div class="row d-flex flex-row justify-content-evenly altro">
+							<div class="row pt-5 py-5 my-5 ps-0" style="font-size: 14px;color: rgb(133, 130, 130);">
+								<div class="col col-lg-3 ps-0 pe-0">
+									<strong style="color: white;"><ul>Azienda</strong>
+									<li>Chi Siamo</li>
+									<li>Opportunità di lavoro</li>
+									<li>For the Record</li></ul>
+								</div>
+								<div class="col col-lg-2">
+									<strong style="color: white;"><ul class="ps-0">Community</strong>
+									<li>Per Artisti</li>
+									<li>Sviluppatori</li>
+									<li>Pubblicità</li>
+									<li>Investitori</li>
+									<li>Venditori</li></ul>
+								</div>
+								<div class="col col-lg-3 ps-0">
+									<strong style="color: white;"><ul>Link Utili</strong>
+									<li>Assistenza</li>
+									<li>App per cellulare gratuita</li>
+									<li>Diritti del consumatore</li></ul>
+								</div>
+								<div class="col col-lg-3 align-items-end ms-5 ps-5" style="color: white;">
+									<ion-icon name="logo-instagram" style="width: 30px;height: 30px;"></ion-icon
+									><ion-icon name="logo-twitter"  class="ms-3" style="width: 30px;height: 30px;"></ion-icon
+									><ion-icon name="logo-facebook" class="ms-3 me-4"  style="width: 30px;height: 30px;"></ion-icon>
+								</div>
+								<hr class="py-3 mt-5"/>
+								<div class="row pt-3">
+									<div class="col col-lg-9 ps-0">
+										<ul id="footer">
+											<li><a href="#">Informazioni legali</a></li>
+											<li><a href="">Centro sulla privacy</a></li>
+											<li><a href="">Informativa sulla privacy</a></li>
+											<li><a href="">Impostazioni cookie</a></li>
+											<li><a href="">Info annunci</a></li>
+											<li><a href="">Accessibilità</a></li>
+										</ul>
+									</div>
+									<div class="col col-lg-2 ms-5" style="font-size: 12px; text-align: end;color: rgb(133, 130, 130);">
+										© 2023 Spotify AB
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-2 d-none d-md-block bg-black text-white" id="friends">
+						<div class="row pt-1">
+							<div class="col col-lg-8"></div>
+							<div class="col col-lg-1"><ion-icon name="remove-outline"></ion-icon></div>
+							<div class="col col-1"><ion-icon name="albums-outline"></ion-icon></div>
+							<div class="col col-1" id="close">
+								<ion-icon name="close-outline"></ion-icon>
+							</div>
+
+							<div class="row d-flex flex-row justify-content-evenly pt-3">
+								<div class="col col-lg-8 pb-3  " ><strong style="font-size: 12px;">Attività di amici</strong></div>
+
+								<div class="col col-lg-1 ps-4 "  ><ion-icon name="person-outline"></ion-icon></div>
+									<div  class="col col-lg-1 ps-1"><ion-icon name="close-outline"></ion-icon></div>
+										
+								
+							</div>
+
+							<div class="ms-2">
+							<div class="row d-flex flex-row justify-content-between py-2">
+								<div class="col col-lg-3">
+									<ion-icon name="person-circle-outline" style="width: 30px;height: 30px;"></ion-icon>
+								</div>
+								<div class="col col-lg-5 flex-grow-1 ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
+							</div>
+							<div class="row py-2">
+								<div class="col col-lg-3">
+									<ion-icon name="person-circle-outline"  style="width: 30px;height: 30px;"></ion-icon>
+								</div>
+								<div class="col col-lg-5  ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
+							</div>
+							<div class="row py-2">
+								<div class="col col-lg-3">
+									<ion-icon name="person-circle-outline"  style="width: 30px;height: 30px;"></ion-icon>
+								</div>
+								<div class="col col-lg-5 ">Mario Rossi</div>
+								<div class="col col-lg-4">4 min</div>
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"></script>
+		<script src="index.js"></script>
+	</body>
+</html>
